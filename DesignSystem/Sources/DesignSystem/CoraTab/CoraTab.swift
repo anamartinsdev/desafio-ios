@@ -4,6 +4,8 @@ public class CoraTab: UIView {
     private let segmentControl: UISegmentedControl
     private let iconImageView: UIImageView
     
+    public var onValueChanged: ((Int) -> Void)?
+    
     public var isSegmentedControlEnabled: Bool {
         get {
             return segmentControl.isEnabled
@@ -28,12 +30,19 @@ public class CoraTab: UIView {
     }
      
     required init?(coder: NSCoder) {
-        fatalError("ERROR")
+        segmentControl = UISegmentedControl(items: [])
+        iconImageView = UIImageView()
+        super.init(coder: coder)
     }
     
     private func setupSegmentControl() {
         addSubview(segmentControl)
         segmentControl.selectedSegmentIndex = 0
+        segmentControl.addTarget(
+            self,
+            action: #selector(segmentChanged(_:)),
+            for: .valueChanged
+        )
         updateSegmentControlColors()
         isSegmentedControlEnabled = true
     }
@@ -50,12 +59,18 @@ public class CoraTab: UIView {
         NSLayoutConstraint.activate([
             segmentControl.topAnchor.constraint(equalTo: topAnchor),
             segmentControl.leadingAnchor.constraint(equalTo: leadingAnchor),
-            segmentControl.trailingAnchor.constraint(equalTo: iconImageView.leadingAnchor, constant: -8),
+            segmentControl.trailingAnchor.constraint(
+                equalTo: iconImageView.leadingAnchor,
+                constant: -8
+            ),
             segmentControl.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             iconImageView.widthAnchor.constraint(equalToConstant: 18),
             iconImageView.heightAnchor.constraint(equalToConstant: 18),
-            iconImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -18),
+            iconImageView.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -18
+            ),
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
@@ -71,14 +86,33 @@ public class CoraTab: UIView {
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         
-        segmentControl.setTitleTextAttributes(normalTextAttributes, for: .normal)
-        segmentControl.setTitleTextAttributes(selectedTextAttributes, for: .selected)
+        segmentControl.setTitleTextAttributes(
+            normalTextAttributes,
+            for: .normal
+        )
+        segmentControl.setTitleTextAttributes(
+            selectedTextAttributes,
+            for: .selected
+        )
         
         segmentControl.backgroundColor = .white
         segmentControl.selectedSegmentTintColor = .white
         
         segmentControl.selectedSegmentTintColor = .clear
-        segmentControl.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
-        segmentControl.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+        segmentControl.setBackgroundImage(
+            UIImage(),
+            for: .normal,
+            barMetrics: .default
+        )
+        segmentControl.setDividerImage(
+            UIImage(),
+            forLeftSegmentState: .normal,
+            rightSegmentState: .normal,
+            barMetrics: .default
+        )
+    }
+    
+    @objc private func segmentChanged(_ sender: UISegmentedControl) {
+        onValueChanged?(sender.selectedSegmentIndex)
     }
 }

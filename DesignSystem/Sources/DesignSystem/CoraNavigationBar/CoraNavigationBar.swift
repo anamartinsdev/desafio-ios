@@ -34,7 +34,7 @@ public class CoraNavigationBar: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     private func setupViews() {
@@ -49,7 +49,10 @@ public class CoraNavigationBar: UIView {
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            backButton.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 16
+            ),
             backButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             backButton.widthAnchor.constraint(equalToConstant: 24),
             backButton.heightAnchor.constraint(equalToConstant: 24),
@@ -57,7 +60,10 @@ public class CoraNavigationBar: UIView {
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            actionButton.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -16
+            ),
             actionButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             actionButton.widthAnchor.constraint(equalToConstant: 24),
             actionButton.heightAnchor.constraint(equalToConstant: 24),
@@ -72,16 +78,30 @@ public class CoraNavigationBar: UIView {
         onActionButtonPressed?()
     }
     
-    public func configure(title: String, showBackButton: Bool = true, backAction: (() -> Void)? = nil, actionImage: UIImage? = nil, action: (() -> Void)? = nil) {
+    public func configure(
+        title: String,
+        showBackButton: Bool = true,
+        backAction: (() -> Void)? = nil,
+        actionImage: UIImage? = nil,
+        action: (() -> Void)? = nil
+    ) {
         backgroundColor = .lightGray
         titleLabel.text = title
         backButton.isHidden = !showBackButton
-        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        backButton.addTarget(
+            self,
+            action: #selector(backButtonTapped),
+            for: .touchUpInside
+        )
         
         actionButton.isHidden = (actionImage == nil)
         if let actionImage = actionImage {
             actionButton.setImage(actionImage, for: .normal)
-            actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+            actionButton.addTarget(
+                self,
+                action: #selector(actionButtonTapped),
+                for: .touchUpInside
+            )
         }
         
         self.onBackButtonPressed = backAction

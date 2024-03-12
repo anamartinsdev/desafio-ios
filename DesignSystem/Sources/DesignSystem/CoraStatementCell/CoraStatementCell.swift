@@ -41,7 +41,7 @@ public class CoraStatementCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("error")
+        super.init(coder: coder)
     }
     
     private func setupCellViews() {
@@ -58,21 +58,42 @@ public class CoraStatementCell: UITableViewCell {
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            iconImageView.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 16
+            ),
+            iconImageView.topAnchor.constraint(
+                equalTo: topAnchor,
+                constant: 16
+            ),
             iconImageView.widthAnchor.constraint(equalToConstant: 24),
             iconImageView.heightAnchor.constraint(equalToConstant: 24),
             
-            amountLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 16),
-            amountLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            amountLabel.leadingAnchor.constraint(
+                equalTo: iconImageView.trailingAnchor,
+                constant: 16
+            ),
+            amountLabel.topAnchor.constraint(
+                equalTo: topAnchor,
+                constant: 16
+            ),
             
             descriptionLabel.leadingAnchor.constraint(equalTo: amountLabel.leadingAnchor),
-            descriptionLabel.topAnchor.constraint(equalTo: amountLabel.bottomAnchor, constant: 4),
+            descriptionLabel.topAnchor.constraint(
+                equalTo: amountLabel.bottomAnchor,
+                constant: 4
+            ),
             
             nameLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
-            nameLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 4),
+            nameLabel.topAnchor.constraint(
+                equalTo: descriptionLabel.bottomAnchor,
+                constant: 4
+            ),
             
-            timeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            timeLabel.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -16
+            ),
             timeLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }

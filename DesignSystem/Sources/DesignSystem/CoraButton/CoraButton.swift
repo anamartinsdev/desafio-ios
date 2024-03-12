@@ -32,13 +32,15 @@ public class CoraButton: UIControl {
         }
     }
     
+    var actionHandler: (() -> Void)?
+    
     public init(title: String?, image: UIImage?, style: ButtonStyle) {
         super.init(frame: .zero)
         setup(title: title, image: image, style: style)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("Error")
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     private func setup(title: String?, image: UIImage?, style: ButtonStyle) {
@@ -48,6 +50,7 @@ public class CoraButton: UIControl {
         addSubview(titleLabel)
         addSubview(imageView)
         apply(style: style)
+        addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         setupViews()
     }
@@ -62,13 +65,22 @@ public class CoraButton: UIControl {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
         
-        if let image = imageView.image {
+        if imageView.image != nil {
             NSLayoutConstraint.activate([
                 titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-                titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
+                titleLabel.leadingAnchor.constraint(
+                    equalTo: leadingAnchor,
+                    constant: 22
+                ),
                 imageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-                imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
-                imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+                imageView.trailingAnchor.constraint(
+                    equalTo: trailingAnchor,
+                    constant: -22
+                ),
+                imageView.heightAnchor.constraint(
+                    equalTo: heightAnchor,
+                    multiplier: 0.5
+                ),
                 imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
             ])
         } else {
@@ -101,5 +113,9 @@ public class CoraButton: UIControl {
             imageView.tintColor = tintColor
         }
         self.backgroundColor = backgroundColor
+    }
+    
+    @objc private func buttonAction() {
+        actionHandler?()
     }
 }
