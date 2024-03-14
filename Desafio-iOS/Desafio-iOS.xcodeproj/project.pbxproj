@@ -3,13 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A70CB9832BA0E5CC005E7CC3 /* AuthPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9822BA0E5CC005E7CC3 /* AuthPasswordView.swift */; };
+		A70CB9862BA0F470005E7CC3 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9852BA0F470005E7CC3 /* IntroView.swift */; };
+		A70CB9892BA12BD2005E7CC3 /* StatementDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9882BA12BD2005E7CC3 /* StatementDetailView.swift */; };
+		A70CB9902BA27354005E7CC3 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB98F2BA27353005E7CC3 /* IntroViewController.swift */; };
+		A70CB9922BA27398005E7CC3 /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9912BA27398005E7CC3 /* IntroViewModel.swift */; };
+		A70CB9942BA273C1005E7CC3 /* IntroRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9932BA273C1005E7CC3 /* IntroRouter.swift */; };
+		A70CB9962BA2742F005E7CC3 /* IntroFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9952BA2742F005E7CC3 /* IntroFactory.swift */; };
+		A70CB9982BA275FB005E7CC3 /* AuthCPFFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9972BA275FB005E7CC3 /* AuthCPFFactory.swift */; };
+		A70CB99A2BA27641005E7CC3 /* AuthCPFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9992BA27641005E7CC3 /* AuthCPFViewController.swift */; };
+		A70CB99C2BA27649005E7CC3 /* AuthCPFViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB99B2BA27649005E7CC3 /* AuthCPFViewModel.swift */; };
+		A70CB99E2BA27650005E7CC3 /* AuthCPFRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB99D2BA27650005E7CC3 /* AuthCPFRouter.swift */; };
+		A70CB9A02BA276BD005E7CC3 /* AuthPasswordFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB99F2BA276BD005E7CC3 /* AuthPasswordFactory.swift */; };
+		A70CB9A22BA27A61005E7CC3 /* AuthPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9A12BA27A61005E7CC3 /* AuthPasswordViewController.swift */; };
+		A70CB9A42BA27A7E005E7CC3 /* AuthPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9A32BA27A7E005E7CC3 /* AuthPasswordRouter.swift */; };
+		A70CB9A62BA27A85005E7CC3 /* AuthPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9A52BA27A85005E7CC3 /* AuthPasswordViewModel.swift */; };
+		A70CB9AA2BA27CF2005E7CC3 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9A92BA27CF2005E7CC3 /* AuthRepository.swift */; };
+		A70CB9AC2BA27E17005E7CC3 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9AB2BA27E17005E7CC3 /* AuthUseCase.swift */; };
+		A70CB9B02BA2805C005E7CC3 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9AF2BA2805C005E7CC3 /* KeychainManager.swift */; };
+		A70CB9B32BA2836D005E7CC3 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A70CB9B22BA2836D005E7CC3 /* DesignSystem */; };
+		A70CB9B62BA2837C005E7CC3 /* CoraNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = A70CB9B52BA2837C005E7CC3 /* CoraNetwork */; };
+		A70CB9B82BA297B9005E7CC3 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9B72BA297B9005E7CC3 /* KeychainError.swift */; };
 		A72490492B9D094700A77562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72490482B9D094700A77562 /* AppDelegate.swift */; };
 		A724904B2B9D094700A77562 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724904A2B9D094700A77562 /* SceneDelegate.swift */; };
-		A724904D2B9D094700A77562 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724904C2B9D094700A77562 /* ViewController.swift */; };
 		A72490502B9D094700A77562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A724904E2B9D094700A77562 /* Main.storyboard */; };
 		A72490532B9D094700A77562 /* Desafio_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A72490512B9D094700A77562 /* Desafio_iOS.xcdatamodeld */; };
 		A72490552B9D094800A77562 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A72490542B9D094800A77562 /* Assets.xcassets */; };
@@ -17,6 +37,8 @@
 		A72490632B9D094900A77562 /* Desafio_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72490622B9D094900A77562 /* Desafio_iOSTests.swift */; };
 		A724906D2B9D094900A77562 /* Desafio_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724906C2B9D094900A77562 /* Desafio_iOSUITests.swift */; };
 		A724906F2B9D094900A77562 /* Desafio_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724906E2B9D094900A77562 /* Desafio_iOSUITestsLaunchTests.swift */; };
+		A724907E2B9FE95200A77562 /* AuthCPFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724907D2B9FE95200A77562 /* AuthCPFView.swift */; };
+		A72490812B9FE9B300A77562 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A72490802B9FE9B300A77562 /* DesignSystem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +59,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A70CB9822BA0E5CC005E7CC3 /* AuthPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPasswordView.swift; sourceTree = "<group>"; };
+		A70CB9852BA0F470005E7CC3 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		A70CB9882BA12BD2005E7CC3 /* StatementDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailView.swift; sourceTree = "<group>"; };
+		A70CB98F2BA27353005E7CC3 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		A70CB9912BA27398005E7CC3 /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
+		A70CB9932BA273C1005E7CC3 /* IntroRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroRouter.swift; sourceTree = "<group>"; };
+		A70CB9952BA2742F005E7CC3 /* IntroFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroFactory.swift; sourceTree = "<group>"; };
+		A70CB9972BA275FB005E7CC3 /* AuthCPFFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCPFFactory.swift; sourceTree = "<group>"; };
+		A70CB9992BA27641005E7CC3 /* AuthCPFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCPFViewController.swift; sourceTree = "<group>"; };
+		A70CB99B2BA27649005E7CC3 /* AuthCPFViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCPFViewModel.swift; sourceTree = "<group>"; };
+		A70CB99D2BA27650005E7CC3 /* AuthCPFRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCPFRouter.swift; sourceTree = "<group>"; };
+		A70CB99F2BA276BD005E7CC3 /* AuthPasswordFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPasswordFactory.swift; sourceTree = "<group>"; };
+		A70CB9A12BA27A61005E7CC3 /* AuthPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPasswordViewController.swift; sourceTree = "<group>"; };
+		A70CB9A32BA27A7E005E7CC3 /* AuthPasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPasswordRouter.swift; sourceTree = "<group>"; };
+		A70CB9A52BA27A85005E7CC3 /* AuthPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPasswordViewModel.swift; sourceTree = "<group>"; };
+		A70CB9A92BA27CF2005E7CC3 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		A70CB9AB2BA27E17005E7CC3 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		A70CB9AF2BA2805C005E7CC3 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		A70CB9B72BA297B9005E7CC3 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 		A72490452B9D094700A77562 /* Desafio-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72490482B9D094700A77562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A724904A2B9D094700A77562 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A724904C2B9D094700A77562 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A724904F2B9D094700A77562 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A72490522B9D094700A77562 /* Desafio_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Desafio_iOS.xcdatamodel; sourceTree = "<group>"; };
 		A72490542B9D094800A77562 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +91,7 @@
 		A72490682B9D094900A77562 /* Desafio-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A724906C2B9D094900A77562 /* Desafio_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_iOSUITests.swift; sourceTree = "<group>"; };
 		A724906E2B9D094900A77562 /* Desafio_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A724907D2B9FE95200A77562 /* AuthCPFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCPFView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +99,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A72490812B9FE9B300A77562 /* DesignSystem in Frameworks */,
+				A70CB9B62BA2837C005E7CC3 /* CoraNetwork in Frameworks */,
+				A70CB9B32BA2836D005E7CC3 /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +122,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A70CB9812BA0E5B5005E7CC3 /* AuthPassword */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9822BA0E5CC005E7CC3 /* AuthPasswordView.swift */,
+				A70CB99F2BA276BD005E7CC3 /* AuthPasswordFactory.swift */,
+				A70CB9A12BA27A61005E7CC3 /* AuthPasswordViewController.swift */,
+				A70CB9A32BA27A7E005E7CC3 /* AuthPasswordRouter.swift */,
+				A70CB9A52BA27A85005E7CC3 /* AuthPasswordViewModel.swift */,
+			);
+			path = AuthPassword;
+			sourceTree = "<group>";
+		};
+		A70CB9842BA0F45D005E7CC3 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9852BA0F470005E7CC3 /* IntroView.swift */,
+				A70CB98F2BA27353005E7CC3 /* IntroViewController.swift */,
+				A70CB9912BA27398005E7CC3 /* IntroViewModel.swift */,
+				A70CB9932BA273C1005E7CC3 /* IntroRouter.swift */,
+				A70CB9952BA2742F005E7CC3 /* IntroFactory.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		A70CB9872BA12BA8005E7CC3 /* StatementDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9882BA12BD2005E7CC3 /* StatementDetailView.swift */,
+			);
+			path = StatementDetail;
+			sourceTree = "<group>";
+		};
+		A70CB9A72BA27CDD005E7CC3 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9A82BA27CE7005E7CC3 /* Auth */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A70CB9A82BA27CE7005E7CC3 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9A92BA27CF2005E7CC3 /* AuthRepository.swift */,
+				A70CB9AB2BA27E17005E7CC3 /* AuthUseCase.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A70CB9AD2BA28048005E7CC3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9AE2BA2804D005E7CC3 /* Security */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A70CB9AE2BA2804D005E7CC3 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9AF2BA2805C005E7CC3 /* KeychainManager.swift */,
+				A70CB9B72BA297B9005E7CC3 /* KeychainError.swift */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
 		A724903C2B9D094700A77562 = {
 			isa = PBXGroup;
 			children = (
@@ -101,9 +211,11 @@
 		A72490472B9D094700A77562 /* Desafio-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				A70CB9AD2BA28048005E7CC3 /* Data */,
+				A70CB9A72BA27CDD005E7CC3 /* Domain */,
+				A724907B2B9FE90A00A77562 /* Presentation */,
 				A72490482B9D094700A77562 /* AppDelegate.swift */,
 				A724904A2B9D094700A77562 /* SceneDelegate.swift */,
-				A724904C2B9D094700A77562 /* ViewController.swift */,
 				A724904E2B9D094700A77562 /* Main.storyboard */,
 				A72490542B9D094800A77562 /* Assets.xcassets */,
 				A72490562B9D094800A77562 /* LaunchScreen.storyboard */,
@@ -130,6 +242,29 @@
 			path = "Desafio-iOSUITests";
 			sourceTree = "<group>";
 		};
+		A724907B2B9FE90A00A77562 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9872BA12BA8005E7CC3 /* StatementDetail */,
+				A70CB9842BA0F45D005E7CC3 /* Intro */,
+				A70CB9812BA0E5B5005E7CC3 /* AuthPassword */,
+				A724907C2B9FE91F00A77562 /* AuthCPF */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A724907C2B9FE91F00A77562 /* AuthCPF */ = {
+			isa = PBXGroup;
+			children = (
+				A724907D2B9FE95200A77562 /* AuthCPFView.swift */,
+				A70CB9972BA275FB005E7CC3 /* AuthCPFFactory.swift */,
+				A70CB9992BA27641005E7CC3 /* AuthCPFViewController.swift */,
+				A70CB99B2BA27649005E7CC3 /* AuthCPFViewModel.swift */,
+				A70CB99D2BA27650005E7CC3 /* AuthCPFRouter.swift */,
+			);
+			path = AuthCPF;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +281,11 @@
 			dependencies = (
 			);
 			name = "Desafio-iOS";
+			packageProductDependencies = (
+				A72490802B9FE9B300A77562 /* DesignSystem */,
+				A70CB9B22BA2836D005E7CC3 /* DesignSystem */,
+				A70CB9B52BA2837C005E7CC3 /* CoraNetwork */,
+			);
 			productName = "Desafio-iOS";
 			productReference = A72490452B9D094700A77562 /* Desafio-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +358,10 @@
 				Base,
 			);
 			mainGroup = A724903C2B9D094700A77562;
+			packageReferences = (
+				A70CB9B12BA2836D005E7CC3 /* XCLocalSwiftPackageReference "../DesignSystem" */,
+				A70CB9B42BA2837C005E7CC3 /* XCLocalSwiftPackageReference "../CoraNetwork" */,
+			);
 			productRefGroup = A72490462B9D094700A77562 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -261,10 +405,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A724904D2B9D094700A77562 /* ViewController.swift in Sources */,
+				A70CB9902BA27354005E7CC3 /* IntroViewController.swift in Sources */,
+				A70CB9862BA0F470005E7CC3 /* IntroView.swift in Sources */,
+				A70CB9A62BA27A85005E7CC3 /* AuthPasswordViewModel.swift in Sources */,
+				A70CB9B82BA297B9005E7CC3 /* KeychainError.swift in Sources */,
 				A72490532B9D094700A77562 /* Desafio_iOS.xcdatamodeld in Sources */,
+				A70CB9A02BA276BD005E7CC3 /* AuthPasswordFactory.swift in Sources */,
 				A72490492B9D094700A77562 /* AppDelegate.swift in Sources */,
+				A70CB9962BA2742F005E7CC3 /* IntroFactory.swift in Sources */,
+				A70CB99C2BA27649005E7CC3 /* AuthCPFViewModel.swift in Sources */,
+				A70CB9832BA0E5CC005E7CC3 /* AuthPasswordView.swift in Sources */,
 				A724904B2B9D094700A77562 /* SceneDelegate.swift in Sources */,
+				A70CB9AC2BA27E17005E7CC3 /* AuthUseCase.swift in Sources */,
+				A70CB9A42BA27A7E005E7CC3 /* AuthPasswordRouter.swift in Sources */,
+				A70CB9922BA27398005E7CC3 /* IntroViewModel.swift in Sources */,
+				A70CB99E2BA27650005E7CC3 /* AuthCPFRouter.swift in Sources */,
+				A724907E2B9FE95200A77562 /* AuthCPFView.swift in Sources */,
+				A70CB9892BA12BD2005E7CC3 /* StatementDetailView.swift in Sources */,
+				A70CB9B02BA2805C005E7CC3 /* KeychainManager.swift in Sources */,
+				A70CB9A22BA27A61005E7CC3 /* AuthPasswordViewController.swift in Sources */,
+				A70CB9982BA275FB005E7CC3 /* AuthCPFFactory.swift in Sources */,
+				A70CB9AA2BA27CF2005E7CC3 /* AuthRepository.swift in Sources */,
+				A70CB99A2BA27641005E7CC3 /* AuthCPFViewController.swift in Sources */,
+				A70CB9942BA273C1005E7CC3 /* IntroRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +535,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -429,7 +592,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -611,6 +774,32 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A70CB9B12BA2836D005E7CC3 /* XCLocalSwiftPackageReference "../DesignSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../DesignSystem;
+		};
+		A70CB9B42BA2837C005E7CC3 /* XCLocalSwiftPackageReference "../CoraNetwork" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../CoraNetwork;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A70CB9B22BA2836D005E7CC3 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		A70CB9B52BA2837C005E7CC3 /* CoraNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoraNetwork;
+		};
+		A72490802B9FE9B300A77562 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		A72490512B9D094700A77562 /* Desafio_iOS.xcdatamodeld */ = {
