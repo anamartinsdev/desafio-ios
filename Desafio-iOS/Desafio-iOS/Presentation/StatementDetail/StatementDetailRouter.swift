@@ -1,11 +1,10 @@
 import UIKit.UINavigationController
 
-protocol AuthPasswordRouterProtocol {
+protocol StatementDetailRouterProtocol {
     func navigateToPrevious()
-    func navigateToStatement()
 }
 
-final class AuthPasswordRouter: AuthPasswordRouterProtocol {
+final class StatementDetailRouter: StatementDetailRouterProtocol {
     private var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -14,10 +13,5 @@ final class AuthPasswordRouter: AuthPasswordRouterProtocol {
     
     func navigateToPrevious() {
         navigationController.popViewController(animated: true)
-    }
-    
-    func navigateToStatement() {
-        let viewController = StatementFactory.create(navigationController: navigationController)
-        navigationController.pushViewController(viewController, animated: true)
     }
 }

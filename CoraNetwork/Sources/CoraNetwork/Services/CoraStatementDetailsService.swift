@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CoraStatementDetailsServiceProtocol {
+public protocol CoraStatementDetailsServiceProtocol {
     func fetchDetails(forId id: String, completion: @escaping (Data?, Error?) -> Void)
 }
 

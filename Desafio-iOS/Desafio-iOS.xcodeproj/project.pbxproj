@@ -28,6 +28,24 @@
 		A70CB9B32BA2836D005E7CC3 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A70CB9B22BA2836D005E7CC3 /* DesignSystem */; };
 		A70CB9B62BA2837C005E7CC3 /* CoraNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = A70CB9B52BA2837C005E7CC3 /* CoraNetwork */; };
 		A70CB9B82BA297B9005E7CC3 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9B72BA297B9005E7CC3 /* KeychainError.swift */; };
+		A70CB9BA2BA3708C005E7CC3 /* StatementDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9B92BA3708C005E7CC3 /* StatementDetailViewModel.swift */; };
+		A70CB9BC2BA37095005E7CC3 /* StatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9BB2BA37095005E7CC3 /* StatementDetailViewController.swift */; };
+		A70CB9BE2BA370A5005E7CC3 /* StatementDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9BD2BA370A5005E7CC3 /* StatementDetailRouter.swift */; };
+		A70CB9C02BA370AD005E7CC3 /* StatementDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9BF2BA370AD005E7CC3 /* StatementDetailFactory.swift */; };
+		A70CB9C32BA37265005E7CC3 /* TransactionDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9C22BA37265005E7CC3 /* TransactionDetailRepository.swift */; };
+		A70CB9C62BA3BD95005E7CC3 /* TransactionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9C52BA3BD95005E7CC3 /* TransactionDetail.swift */; };
+		A70CB9C92BA3C3B3005E7CC3 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9C82BA3C3B3005E7CC3 /* ViewState.swift */; };
+		A70CB9CB2BA3D302005E7CC3 /* TransactionDetailMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9CA2BA3D302005E7CC3 /* TransactionDetailMapper.swift */; };
+		A70CB9CE2BA3D329005E7CC3 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9CD2BA3D329005E7CC3 /* String.swift */; };
+		A70CB9D12BA3D575005E7CC3 /* StatementRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9D02BA3D575005E7CC3 /* StatementRouter.swift */; };
+		A70CB9D32BA3D57E005E7CC3 /* StatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9D22BA3D57E005E7CC3 /* StatementView.swift */; };
+		A70CB9D52BA3D589005E7CC3 /* StatementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9D42BA3D589005E7CC3 /* StatementViewController.swift */; };
+		A70CB9D72BA3D597005E7CC3 /* StatementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9D62BA3D597005E7CC3 /* StatementViewModel.swift */; };
+		A70CB9D92BA3D800005E7CC3 /* StatementTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9D82BA3D800005E7CC3 /* StatementTransactionTableViewCell.swift */; };
+		A70CB9DC2BA3D939005E7CC3 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9DB2BA3D939005E7CC3 /* Transaction.swift */; };
+		A70CB9DE2BA3DA48005E7CC3 /* StatementTransactionMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9DD2BA3DA48005E7CC3 /* StatementTransactionMapper.swift */; };
+		A70CB9E12BA3DBC9005E7CC3 /* StatementRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9E02BA3DBC9005E7CC3 /* StatementRepository.swift */; };
+		A70CB9E32BA3E7A6005E7CC3 /* StatementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9E22BA3E7A6005E7CC3 /* StatementFactory.swift */; };
 		A72490492B9D094700A77562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72490482B9D094700A77562 /* AppDelegate.swift */; };
 		A724904B2B9D094700A77562 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724904A2B9D094700A77562 /* SceneDelegate.swift */; };
 		A72490502B9D094700A77562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A724904E2B9D094700A77562 /* Main.storyboard */; };
@@ -78,6 +96,24 @@
 		A70CB9AB2BA27E17005E7CC3 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		A70CB9AF2BA2805C005E7CC3 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		A70CB9B72BA297B9005E7CC3 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
+		A70CB9B92BA3708C005E7CC3 /* StatementDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailViewModel.swift; sourceTree = "<group>"; };
+		A70CB9BB2BA37095005E7CC3 /* StatementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailViewController.swift; sourceTree = "<group>"; };
+		A70CB9BD2BA370A5005E7CC3 /* StatementDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailRouter.swift; sourceTree = "<group>"; };
+		A70CB9BF2BA370AD005E7CC3 /* StatementDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailFactory.swift; sourceTree = "<group>"; };
+		A70CB9C22BA37265005E7CC3 /* TransactionDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailRepository.swift; sourceTree = "<group>"; };
+		A70CB9C52BA3BD95005E7CC3 /* TransactionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetail.swift; sourceTree = "<group>"; };
+		A70CB9C82BA3C3B3005E7CC3 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		A70CB9CA2BA3D302005E7CC3 /* TransactionDetailMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailMapper.swift; sourceTree = "<group>"; };
+		A70CB9CD2BA3D329005E7CC3 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		A70CB9D02BA3D575005E7CC3 /* StatementRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementRouter.swift; sourceTree = "<group>"; };
+		A70CB9D22BA3D57E005E7CC3 /* StatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementView.swift; sourceTree = "<group>"; };
+		A70CB9D42BA3D589005E7CC3 /* StatementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementViewController.swift; sourceTree = "<group>"; };
+		A70CB9D62BA3D597005E7CC3 /* StatementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementViewModel.swift; sourceTree = "<group>"; };
+		A70CB9D82BA3D800005E7CC3 /* StatementTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTransactionTableViewCell.swift; sourceTree = "<group>"; };
+		A70CB9DB2BA3D939005E7CC3 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		A70CB9DD2BA3DA48005E7CC3 /* StatementTransactionMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTransactionMapper.swift; sourceTree = "<group>"; };
+		A70CB9E02BA3DBC9005E7CC3 /* StatementRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementRepository.swift; sourceTree = "<group>"; };
+		A70CB9E22BA3E7A6005E7CC3 /* StatementFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementFactory.swift; sourceTree = "<group>"; };
 		A72490452B9D094700A77562 /* Desafio-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72490482B9D094700A77562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A724904A2B9D094700A77562 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +186,11 @@
 			isa = PBXGroup;
 			children = (
 				A70CB9882BA12BD2005E7CC3 /* StatementDetailView.swift */,
+				A70CB9B92BA3708C005E7CC3 /* StatementDetailViewModel.swift */,
+				A70CB9BB2BA37095005E7CC3 /* StatementDetailViewController.swift */,
+				A70CB9BD2BA370A5005E7CC3 /* StatementDetailRouter.swift */,
+				A70CB9BF2BA370AD005E7CC3 /* StatementDetailFactory.swift */,
+				A70CB9CA2BA3D302005E7CC3 /* TransactionDetailMapper.swift */,
 			);
 			path = StatementDetail;
 			sourceTree = "<group>";
@@ -157,6 +198,8 @@
 		A70CB9A72BA27CDD005E7CC3 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				A70CB9DF2BA3DB7F005E7CC3 /* Satement */,
+				A70CB9C12BA37252005E7CC3 /* TransactionDetail */,
 				A70CB9A82BA27CE7005E7CC3 /* Auth */,
 			);
 			path = Domain;
@@ -174,6 +217,8 @@
 		A70CB9AD2BA28048005E7CC3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A70CB9DA2BA3D8FB005E7CC3 /* Transaction */,
+				A70CB9C42BA3735E005E7CC3 /* TransactionDetail */,
 				A70CB9AE2BA2804D005E7CC3 /* Security */,
 			);
 			path = Data;
@@ -186,6 +231,69 @@
 				A70CB9B72BA297B9005E7CC3 /* KeychainError.swift */,
 			);
 			path = Security;
+			sourceTree = "<group>";
+		};
+		A70CB9C12BA37252005E7CC3 /* TransactionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9C22BA37265005E7CC3 /* TransactionDetailRepository.swift */,
+			);
+			path = TransactionDetail;
+			sourceTree = "<group>";
+		};
+		A70CB9C42BA3735E005E7CC3 /* TransactionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9C52BA3BD95005E7CC3 /* TransactionDetail.swift */,
+			);
+			path = TransactionDetail;
+			sourceTree = "<group>";
+		};
+		A70CB9C72BA3C3A5005E7CC3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9CC2BA3D322005E7CC3 /* Extensions */,
+				A70CB9C82BA3C3B3005E7CC3 /* ViewState.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A70CB9CC2BA3D322005E7CC3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9CD2BA3D329005E7CC3 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A70CB9CF2BA3D551005E7CC3 /* Statement */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9D02BA3D575005E7CC3 /* StatementRouter.swift */,
+				A70CB9D22BA3D57E005E7CC3 /* StatementView.swift */,
+				A70CB9D42BA3D589005E7CC3 /* StatementViewController.swift */,
+				A70CB9D62BA3D597005E7CC3 /* StatementViewModel.swift */,
+				A70CB9D82BA3D800005E7CC3 /* StatementTransactionTableViewCell.swift */,
+				A70CB9DD2BA3DA48005E7CC3 /* StatementTransactionMapper.swift */,
+				A70CB9E22BA3E7A6005E7CC3 /* StatementFactory.swift */,
+			);
+			path = Statement;
+			sourceTree = "<group>";
+		};
+		A70CB9DA2BA3D8FB005E7CC3 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9DB2BA3D939005E7CC3 /* Transaction.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		A70CB9DF2BA3DB7F005E7CC3 /* Satement */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9E02BA3DBC9005E7CC3 /* StatementRepository.swift */,
+			);
+			path = Satement;
 			sourceTree = "<group>";
 		};
 		A724903C2B9D094700A77562 = {
@@ -211,6 +319,7 @@
 		A72490472B9D094700A77562 /* Desafio-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				A70CB9C72BA3C3A5005E7CC3 /* Utils */,
 				A70CB9AD2BA28048005E7CC3 /* Data */,
 				A70CB9A72BA27CDD005E7CC3 /* Domain */,
 				A724907B2B9FE90A00A77562 /* Presentation */,
@@ -245,6 +354,7 @@
 		A724907B2B9FE90A00A77562 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A70CB9CF2BA3D551005E7CC3 /* Statement */,
 				A70CB9872BA12BA8005E7CC3 /* StatementDetail */,
 				A70CB9842BA0F45D005E7CC3 /* Intro */,
 				A70CB9812BA0E5B5005E7CC3 /* AuthPassword */,
@@ -407,26 +517,44 @@
 			files = (
 				A70CB9902BA27354005E7CC3 /* IntroViewController.swift in Sources */,
 				A70CB9862BA0F470005E7CC3 /* IntroView.swift in Sources */,
+				A70CB9C92BA3C3B3005E7CC3 /* ViewState.swift in Sources */,
 				A70CB9A62BA27A85005E7CC3 /* AuthPasswordViewModel.swift in Sources */,
+				A70CB9D72BA3D597005E7CC3 /* StatementViewModel.swift in Sources */,
 				A70CB9B82BA297B9005E7CC3 /* KeychainError.swift in Sources */,
+				A70CB9D12BA3D575005E7CC3 /* StatementRouter.swift in Sources */,
+				A70CB9C62BA3BD95005E7CC3 /* TransactionDetail.swift in Sources */,
+				A70CB9C02BA370AD005E7CC3 /* StatementDetailFactory.swift in Sources */,
 				A72490532B9D094700A77562 /* Desafio_iOS.xcdatamodeld in Sources */,
+				A70CB9BA2BA3708C005E7CC3 /* StatementDetailViewModel.swift in Sources */,
+				A70CB9CB2BA3D302005E7CC3 /* TransactionDetailMapper.swift in Sources */,
 				A70CB9A02BA276BD005E7CC3 /* AuthPasswordFactory.swift in Sources */,
 				A72490492B9D094700A77562 /* AppDelegate.swift in Sources */,
 				A70CB9962BA2742F005E7CC3 /* IntroFactory.swift in Sources */,
+				A70CB9BE2BA370A5005E7CC3 /* StatementDetailRouter.swift in Sources */,
 				A70CB99C2BA27649005E7CC3 /* AuthCPFViewModel.swift in Sources */,
+				A70CB9E12BA3DBC9005E7CC3 /* StatementRepository.swift in Sources */,
 				A70CB9832BA0E5CC005E7CC3 /* AuthPasswordView.swift in Sources */,
 				A724904B2B9D094700A77562 /* SceneDelegate.swift in Sources */,
+				A70CB9D52BA3D589005E7CC3 /* StatementViewController.swift in Sources */,
 				A70CB9AC2BA27E17005E7CC3 /* AuthUseCase.swift in Sources */,
 				A70CB9A42BA27A7E005E7CC3 /* AuthPasswordRouter.swift in Sources */,
 				A70CB9922BA27398005E7CC3 /* IntroViewModel.swift in Sources */,
+				A70CB9D92BA3D800005E7CC3 /* StatementTransactionTableViewCell.swift in Sources */,
 				A70CB99E2BA27650005E7CC3 /* AuthCPFRouter.swift in Sources */,
+				A70CB9D32BA3D57E005E7CC3 /* StatementView.swift in Sources */,
+				A70CB9BC2BA37095005E7CC3 /* StatementDetailViewController.swift in Sources */,
+				A70CB9C32BA37265005E7CC3 /* TransactionDetailRepository.swift in Sources */,
 				A724907E2B9FE95200A77562 /* AuthCPFView.swift in Sources */,
 				A70CB9892BA12BD2005E7CC3 /* StatementDetailView.swift in Sources */,
+				A70CB9DC2BA3D939005E7CC3 /* Transaction.swift in Sources */,
 				A70CB9B02BA2805C005E7CC3 /* KeychainManager.swift in Sources */,
 				A70CB9A22BA27A61005E7CC3 /* AuthPasswordViewController.swift in Sources */,
+				A70CB9DE2BA3DA48005E7CC3 /* StatementTransactionMapper.swift in Sources */,
+				A70CB9E32BA3E7A6005E7CC3 /* StatementFactory.swift in Sources */,
 				A70CB9982BA275FB005E7CC3 /* AuthCPFFactory.swift in Sources */,
 				A70CB9AA2BA27CF2005E7CC3 /* AuthRepository.swift in Sources */,
 				A70CB99A2BA27641005E7CC3 /* AuthCPFViewController.swift in Sources */,
+				A70CB9CE2BA3D329005E7CC3 /* String.swift in Sources */,
 				A70CB9942BA273C1005E7CC3 /* IntroRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

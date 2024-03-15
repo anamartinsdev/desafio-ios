@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CoraStatementListServiceProtocol {
+public protocol CoraStatementListServiceProtocol {
     func fetchList(completion: @escaping (Data?, Error?) -> Void)
 }
 
