@@ -5,3 +5,10 @@ public enum HttpMethod: String {
     case delete = "DELETE"
     case patch = "PATCH"
 }
+
+enum NetworkError: Error {
+    case tokenAlreadyRefreshing
+    case tokenRefreshFailed
+    case invalidURL
+    case invalidResponse
+}

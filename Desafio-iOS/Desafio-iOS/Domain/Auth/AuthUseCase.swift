@@ -1,3 +1,5 @@
+import CoraSecurity
+
 protocol AuthUseCaseProtocol {
     func getCredentials() -> (String, String)
 }
@@ -11,8 +13,8 @@ final class AuthUseCase: AuthUseCaseProtocol {
     }
     
     func getCredentials() -> (String, String) {
-        if let cpf = keychainManager.getDocument(),
-           let password = keychainManager.getPass() {
+        if let cpf = keychainManager.retrieve(for: .cpf),
+           let password = keychainManager.retrieve(for: .password) {
             return (cpf, password)
         } else {
             return ("", "")

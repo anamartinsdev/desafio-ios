@@ -36,9 +36,17 @@ final class StatementDetailView: UIView, StatementDetailViewProtocol {
         return button
     }()
     
-    private lazy var contentView: UIStackView = {
+    private lazy var titleStack: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
+        view.spacing = 8
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    private lazy var contentView: UIView = {
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -54,7 +62,7 @@ final class StatementDetailView: UIView, StatementDetailViewProtocol {
         let button = CoraButton(
             title: "Compartilhar comprovante",
             image: UIImage(named: "ic_share-ios"),
-            style: .secondary
+            style: .primary
         )
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -104,9 +112,10 @@ extension StatementDetailView: ViewCode {
     func buildViewHierarchy() {
         addSubview(customNavigationBar)
         addSubview(scrollView)
-        contentView.addArrangedSubview(titleIcon)
-        contentView.addArrangedSubview(titleLabel)
+        titleStack.addArrangedSubview(titleIcon)
+        titleStack.addArrangedSubview(titleLabel)
         scrollView.addSubview(contentView)
+        contentView.addSubview(titleStack)
         contentView.addSubview(detailView)
         contentView.addSubview(actionButton)
     }
@@ -123,21 +132,33 @@ extension StatementDetailView: ViewCode {
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
+            titleIcon.heightAnchor.constraint(equalToConstant: 12),
+            titleIcon.widthAnchor.constraint(equalToConstant: 16),
+            
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            detailView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            titleStack.topAnchor.constraint(equalTo: contentView.topAnchor),
+            titleStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            titleStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            titleStack.heightAnchor.constraint(equalToConstant: 64),
+            
+            actionButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            actionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 20),
+            actionButton.heightAnchor.constraint(equalToConstant: 64),
+            actionButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            
+            detailView.topAnchor.constraint(equalTo: titleStack.bottomAnchor),
             detailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
-            actionButton.topAnchor.constraint(equalTo: detailView.bottomAnchor, constant: 20),
-            actionButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            actionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            actionButton.heightAnchor.constraint(equalToConstant: 50),
-            actionButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+            detailView.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: 20)
         ])
+    }
+    
+    func setupAdditionalConfiguration() {
+        backgroundColor = .white
+        titleLabel.text = "Transferência enviada"
     }
 }

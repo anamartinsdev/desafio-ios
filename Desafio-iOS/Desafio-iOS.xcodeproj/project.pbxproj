@@ -24,10 +24,8 @@
 		A70CB9A62BA27A85005E7CC3 /* AuthPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9A52BA27A85005E7CC3 /* AuthPasswordViewModel.swift */; };
 		A70CB9AA2BA27CF2005E7CC3 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9A92BA27CF2005E7CC3 /* AuthRepository.swift */; };
 		A70CB9AC2BA27E17005E7CC3 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9AB2BA27E17005E7CC3 /* AuthUseCase.swift */; };
-		A70CB9B02BA2805C005E7CC3 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9AF2BA2805C005E7CC3 /* KeychainManager.swift */; };
 		A70CB9B32BA2836D005E7CC3 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A70CB9B22BA2836D005E7CC3 /* DesignSystem */; };
 		A70CB9B62BA2837C005E7CC3 /* CoraNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = A70CB9B52BA2837C005E7CC3 /* CoraNetwork */; };
-		A70CB9B82BA297B9005E7CC3 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9B72BA297B9005E7CC3 /* KeychainError.swift */; };
 		A70CB9BA2BA3708C005E7CC3 /* StatementDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9B92BA3708C005E7CC3 /* StatementDetailViewModel.swift */; };
 		A70CB9BC2BA37095005E7CC3 /* StatementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9BB2BA37095005E7CC3 /* StatementDetailViewController.swift */; };
 		A70CB9BE2BA370A5005E7CC3 /* StatementDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9BD2BA370A5005E7CC3 /* StatementDetailRouter.swift */; };
@@ -46,6 +44,12 @@
 		A70CB9DE2BA3DA48005E7CC3 /* StatementTransactionMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9DD2BA3DA48005E7CC3 /* StatementTransactionMapper.swift */; };
 		A70CB9E12BA3DBC9005E7CC3 /* StatementRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9E02BA3DBC9005E7CC3 /* StatementRepository.swift */; };
 		A70CB9E32BA3E7A6005E7CC3 /* StatementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9E22BA3E7A6005E7CC3 /* StatementFactory.swift */; };
+		A70CB9E62BA3EAE4005E7CC3 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9E52BA3EAE4005E7CC3 /* ErrorViewController.swift */; };
+		A70CB9E82BA3EAF8005E7CC3 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9E72BA3EAF8005E7CC3 /* ErrorView.swift */; };
+		A70CB9EA2BA3ED5B005E7CC3 /* ErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9E92BA3ED5B005E7CC3 /* ErrorViewModel.swift */; };
+		A70CB9EC2BA3ED97005E7CC3 /* ErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9EB2BA3ED97005E7CC3 /* ErrorRouter.swift */; };
+		A70CB9EE2BA3EDFF005E7CC3 /* ErrorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9ED2BA3EDFF005E7CC3 /* ErrorFactory.swift */; };
+		A70CB9F12BA47CE3005E7CC3 /* CoraSecurity in Frameworks */ = {isa = PBXBuildFile; productRef = A70CB9F02BA47CE3005E7CC3 /* CoraSecurity */; };
 		A72490492B9D094700A77562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72490482B9D094700A77562 /* AppDelegate.swift */; };
 		A724904B2B9D094700A77562 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724904A2B9D094700A77562 /* SceneDelegate.swift */; };
 		A72490502B9D094700A77562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A724904E2B9D094700A77562 /* Main.storyboard */; };
@@ -94,8 +98,6 @@
 		A70CB9A52BA27A85005E7CC3 /* AuthPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPasswordViewModel.swift; sourceTree = "<group>"; };
 		A70CB9A92BA27CF2005E7CC3 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		A70CB9AB2BA27E17005E7CC3 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
-		A70CB9AF2BA2805C005E7CC3 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
-		A70CB9B72BA297B9005E7CC3 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 		A70CB9B92BA3708C005E7CC3 /* StatementDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailViewModel.swift; sourceTree = "<group>"; };
 		A70CB9BB2BA37095005E7CC3 /* StatementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailViewController.swift; sourceTree = "<group>"; };
 		A70CB9BD2BA370A5005E7CC3 /* StatementDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementDetailRouter.swift; sourceTree = "<group>"; };
@@ -114,6 +116,11 @@
 		A70CB9DD2BA3DA48005E7CC3 /* StatementTransactionMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTransactionMapper.swift; sourceTree = "<group>"; };
 		A70CB9E02BA3DBC9005E7CC3 /* StatementRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementRepository.swift; sourceTree = "<group>"; };
 		A70CB9E22BA3E7A6005E7CC3 /* StatementFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementFactory.swift; sourceTree = "<group>"; };
+		A70CB9E52BA3EAE4005E7CC3 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		A70CB9E72BA3EAF8005E7CC3 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		A70CB9E92BA3ED5B005E7CC3 /* ErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewModel.swift; sourceTree = "<group>"; };
+		A70CB9EB2BA3ED97005E7CC3 /* ErrorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRouter.swift; sourceTree = "<group>"; };
+		A70CB9ED2BA3EDFF005E7CC3 /* ErrorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorFactory.swift; sourceTree = "<group>"; };
 		A72490452B9D094700A77562 /* Desafio-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72490482B9D094700A77562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A724904A2B9D094700A77562 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A72490812B9FE9B300A77562 /* DesignSystem in Frameworks */,
+				A70CB9F12BA47CE3005E7CC3 /* CoraSecurity in Frameworks */,
 				A70CB9B62BA2837C005E7CC3 /* CoraNetwork in Frameworks */,
 				A70CB9B32BA2836D005E7CC3 /* DesignSystem in Frameworks */,
 			);
@@ -219,18 +227,8 @@
 			children = (
 				A70CB9DA2BA3D8FB005E7CC3 /* Transaction */,
 				A70CB9C42BA3735E005E7CC3 /* TransactionDetail */,
-				A70CB9AE2BA2804D005E7CC3 /* Security */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		A70CB9AE2BA2804D005E7CC3 /* Security */ = {
-			isa = PBXGroup;
-			children = (
-				A70CB9AF2BA2805C005E7CC3 /* KeychainManager.swift */,
-				A70CB9B72BA297B9005E7CC3 /* KeychainError.swift */,
-			);
-			path = Security;
 			sourceTree = "<group>";
 		};
 		A70CB9C12BA37252005E7CC3 /* TransactionDetail */ = {
@@ -296,6 +294,18 @@
 			path = Satement;
 			sourceTree = "<group>";
 		};
+		A70CB9E42BA3EADB005E7CC3 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9E52BA3EAE4005E7CC3 /* ErrorViewController.swift */,
+				A70CB9E72BA3EAF8005E7CC3 /* ErrorView.swift */,
+				A70CB9E92BA3ED5B005E7CC3 /* ErrorViewModel.swift */,
+				A70CB9EB2BA3ED97005E7CC3 /* ErrorRouter.swift */,
+				A70CB9ED2BA3EDFF005E7CC3 /* ErrorFactory.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		A724903C2B9D094700A77562 = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +364,7 @@
 		A724907B2B9FE90A00A77562 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A70CB9E42BA3EADB005E7CC3 /* Error */,
 				A70CB9CF2BA3D551005E7CC3 /* Statement */,
 				A70CB9872BA12BA8005E7CC3 /* StatementDetail */,
 				A70CB9842BA0F45D005E7CC3 /* Intro */,
@@ -395,6 +406,7 @@
 				A72490802B9FE9B300A77562 /* DesignSystem */,
 				A70CB9B22BA2836D005E7CC3 /* DesignSystem */,
 				A70CB9B52BA2837C005E7CC3 /* CoraNetwork */,
+				A70CB9F02BA47CE3005E7CC3 /* CoraSecurity */,
 			);
 			productName = "Desafio-iOS";
 			productReference = A72490452B9D094700A77562 /* Desafio-iOS.app */;
@@ -471,6 +483,7 @@
 			packageReferences = (
 				A70CB9B12BA2836D005E7CC3 /* XCLocalSwiftPackageReference "../DesignSystem" */,
 				A70CB9B42BA2837C005E7CC3 /* XCLocalSwiftPackageReference "../CoraNetwork" */,
+				A70CB9EF2BA47CE3005E7CC3 /* XCLocalSwiftPackageReference "../CoraSecurity" */,
 			);
 			productRefGroup = A72490462B9D094700A77562 /* Products */;
 			projectDirPath = "";
@@ -520,8 +533,8 @@
 				A70CB9C92BA3C3B3005E7CC3 /* ViewState.swift in Sources */,
 				A70CB9A62BA27A85005E7CC3 /* AuthPasswordViewModel.swift in Sources */,
 				A70CB9D72BA3D597005E7CC3 /* StatementViewModel.swift in Sources */,
-				A70CB9B82BA297B9005E7CC3 /* KeychainError.swift in Sources */,
 				A70CB9D12BA3D575005E7CC3 /* StatementRouter.swift in Sources */,
+				A70CB9E62BA3EAE4005E7CC3 /* ErrorViewController.swift in Sources */,
 				A70CB9C62BA3BD95005E7CC3 /* TransactionDetail.swift in Sources */,
 				A70CB9C02BA370AD005E7CC3 /* StatementDetailFactory.swift in Sources */,
 				A72490532B9D094700A77562 /* Desafio_iOS.xcdatamodeld in Sources */,
@@ -530,11 +543,13 @@
 				A70CB9A02BA276BD005E7CC3 /* AuthPasswordFactory.swift in Sources */,
 				A72490492B9D094700A77562 /* AppDelegate.swift in Sources */,
 				A70CB9962BA2742F005E7CC3 /* IntroFactory.swift in Sources */,
+				A70CB9EC2BA3ED97005E7CC3 /* ErrorRouter.swift in Sources */,
 				A70CB9BE2BA370A5005E7CC3 /* StatementDetailRouter.swift in Sources */,
 				A70CB99C2BA27649005E7CC3 /* AuthCPFViewModel.swift in Sources */,
 				A70CB9E12BA3DBC9005E7CC3 /* StatementRepository.swift in Sources */,
 				A70CB9832BA0E5CC005E7CC3 /* AuthPasswordView.swift in Sources */,
 				A724904B2B9D094700A77562 /* SceneDelegate.swift in Sources */,
+				A70CB9EA2BA3ED5B005E7CC3 /* ErrorViewModel.swift in Sources */,
 				A70CB9D52BA3D589005E7CC3 /* StatementViewController.swift in Sources */,
 				A70CB9AC2BA27E17005E7CC3 /* AuthUseCase.swift in Sources */,
 				A70CB9A42BA27A7E005E7CC3 /* AuthPasswordRouter.swift in Sources */,
@@ -544,10 +559,11 @@
 				A70CB9D32BA3D57E005E7CC3 /* StatementView.swift in Sources */,
 				A70CB9BC2BA37095005E7CC3 /* StatementDetailViewController.swift in Sources */,
 				A70CB9C32BA37265005E7CC3 /* TransactionDetailRepository.swift in Sources */,
+				A70CB9E82BA3EAF8005E7CC3 /* ErrorView.swift in Sources */,
 				A724907E2B9FE95200A77562 /* AuthCPFView.swift in Sources */,
 				A70CB9892BA12BD2005E7CC3 /* StatementDetailView.swift in Sources */,
 				A70CB9DC2BA3D939005E7CC3 /* Transaction.swift in Sources */,
-				A70CB9B02BA2805C005E7CC3 /* KeychainManager.swift in Sources */,
+				A70CB9EE2BA3EDFF005E7CC3 /* ErrorFactory.swift in Sources */,
 				A70CB9A22BA27A61005E7CC3 /* AuthPasswordViewController.swift in Sources */,
 				A70CB9DE2BA3DA48005E7CC3 /* StatementTransactionMapper.swift in Sources */,
 				A70CB9E32BA3E7A6005E7CC3 /* StatementFactory.swift in Sources */,
@@ -912,6 +928,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../CoraNetwork;
 		};
+		A70CB9EF2BA47CE3005E7CC3 /* XCLocalSwiftPackageReference "../CoraSecurity" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../CoraSecurity;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -922,6 +942,10 @@
 		A70CB9B52BA2837C005E7CC3 /* CoraNetwork */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoraNetwork;
+		};
+		A70CB9F02BA47CE3005E7CC3 /* CoraSecurity */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoraSecurity;
 		};
 		A72490802B9FE9B300A77562 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;

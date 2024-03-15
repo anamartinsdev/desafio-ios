@@ -3,6 +3,7 @@ import UIKit.UINavigationController
 protocol AuthPasswordRouterProtocol {
     func navigateToPrevious()
     func navigateToStatement()
+    func navigateToErrorScreen()
 }
 
 final class AuthPasswordRouter: AuthPasswordRouterProtocol {
@@ -18,6 +19,11 @@ final class AuthPasswordRouter: AuthPasswordRouterProtocol {
     
     func navigateToStatement() {
         let viewController = StatementFactory.create(navigationController: navigationController)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func navigateToErrorScreen() {
+        let viewController = ErrorFactory.create(navigationController: navigationController)
         navigationController.pushViewController(viewController, animated: true)
     }
 }

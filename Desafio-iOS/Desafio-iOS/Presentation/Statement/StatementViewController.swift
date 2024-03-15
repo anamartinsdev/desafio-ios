@@ -26,6 +26,12 @@ final class StatementViewController: UIViewController {
     private func setupView() {
         contentView.tableView.delegate = self
         contentView.tableView.dataSource = self
+        contentView.actionBack = { [weak self] in
+            self?.viewModel.loadTransactions()
+        }
+        contentView.actionReload = { [weak self] in
+            self?.viewModel.loadTransactions()
+        }
     }
 
     private func bindViewModel() {
@@ -72,6 +78,10 @@ extension StatementViewController: UITableViewDataSource {
         cell.configure(with: transaction)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
     }
 }
 

@@ -1,123 +1,187 @@
 import Foundation
+import CoraSecurity
 
 public protocol NetworkManagerProtocol {
     var token: String? { get set }
     func performRequest(request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
-    func updateTokenIfNeed(completion: @escaping (Bool) -> Void)
     func authenticate(cpf: String?, password: String?, completion: @escaping (Bool, String?) -> Void)
 }
 
 public class NetworkManager: NetworkManagerProtocol {
-    public var token: String?
     private let queue = DispatchQueue(label: NetworkConfiguration.queueIdentifier, attributes: .concurrent)
     private let session: URLSession
     private var isTokenRefreshing = false
+    private let keychainManager: KeychainManagerProtocol
+    private var tokenExpirationDate: Date?
+    private var pendingRequests: [(URLRequest, (Data?, URLResponse?, Error?) -> Void)] = []
     
-    public init(session: URLSession = .shared, token: String? = nil, isTokenRefreshing: Bool = false) {
+    public var token: String? {
+        get {
+            return keychainManager.retrieve(for: .token)
+        }
+        set {
+            guard let newValue = newValue else {
+                try? keychainManager.delete(for: .token)
+                return
+            }
+            try? keychainManager.save(newValue, for: .token)
+        }
+    }
+    
+    public init(session: URLSession = .shared,
+                isTokenRefreshing: Bool = false,
+                keychainManager: KeychainManagerProtocol = KeychainManager()) {
         self.session = session
-        self.token = token
         self.isTokenRefreshing = isTokenRefreshing
+        self.keychainManager = keychainManager
     }
     
     public func performRequest(request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        session.dataTask(with: request) { [ weak self] data, response, error in
-            guard let self = self else { return }
-            
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
-                self.updateTokenIfNeed { success in
-                    if success {
-                        var newRequest = request
-                        newRequest.setValue(self.token, forHTTPHeaderField: "token")
-                        self.performRequest(request: newRequest, completion: completion)
-                    } else {
-                        completion(nil, nil, error)
-                    }
-                }
-            } else {
-                completion(nil, nil, error)
-            }
-        } .resume()
-    }
-    
-    public func updateTokenIfNeed(completion: @escaping (Bool) -> Void) {
-        queue.async(flags: .barrier) {
-            guard !self.isTokenRefreshing else {
-                DispatchQueue.main.async {
-                    completion(false)
-                }
+        queue.sync {
+            // Verifica se o token precisa ser atualizado antes de fazer a requisição.
+            if let expirationDate = self.tokenExpirationDate, Date() < expirationDate, !isTokenRefreshing {
+                // Token é válido, faz a requisição.
+                self.sendRequest(request, completion: completion)
                 return
             }
             
-            self.isTokenRefreshing = true
-            self.authenticate { [weak self] success, newToken in
-                guard let self = self else {
-                    DispatchQueue.main.async {
-                        completion(false)
-                    }
-                    return
-                }
-                if success, let newToken = newToken {
-                    self.queue.async(flags: .barrier) {
-                        self.token = newToken
-                        self.isTokenRefreshing = false
-                        DispatchQueue.main.async {
-                            completion(true)
-                        }
-                    }
-                } else {
-                    self.queue.async(flags: .barrier) {
-                        self.isTokenRefreshing = false
-                        DispatchQueue.main.async {
-                            completion(false)
-                        }
-                    }
-                }
+            if isTokenRefreshing {
+                self.pendingRequests.append((request, completion))
+                return
+            }
+            
+            self.updateToken {
+                self.sendRequest(request, completion: completion)
             }
         }
     }
     
+    private func sendRequest(_ request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        var modifiedRequest = request
+        if let token = self.token {
+            modifiedRequest.setValue(token, forHTTPHeaderField: "token") // Ajuste o cabeçalho conforme necessário
+        }
+        modifiedRequest.setValue(NetworkConfiguration.apiKey, forHTTPHeaderField: "apikey")
+        
+        self.session.dataTask(with: modifiedRequest) { data, response, error in
+            DispatchQueue.main.async {
+                completion(data, response, error)
+            }
+        }.resume()
+    }
     
-    public func authenticate(cpf: String? = nil, password: String? = nil, completion: @escaping (Bool, String?) -> Void) {
+    public func authenticate(cpf: String?, password: String?, completion: @escaping (Bool, String?) -> Void) {
+        // Verifica se a URL é válida
         guard let url = URL(string: "\(NetworkConfiguration.baseURL)/auth") else {
             completion(false, "Invalid URL")
             return
         }
         
+        // Prepara a requisição
         var request = URLRequest(url: url)
         request.httpMethod = HttpMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(NetworkConfiguration.apiKey, forHTTPHeaderField: "apikey")
         
-        let body: [String: Any] = cpf != nil && password != nil
-        ? ["cpf": cpf ?? "", "password": password ?? ""]
-        : ["token": token ?? ""]
+        let body: [String: Any] = ["cpf": cpf ?? "", "password": password ?? ""]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         
+        // Envia a requisição
+        session.dataTask(with: request) { [weak self] data, response, error in
+            guard let self = self else { return }
+            
+            // Trata possíveis erros na requisição
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(false, error.localizedDescription)
+                }
+                return
+            }
+            
+            // Verifica o código de status da resposta
+            guard let httpResponse = response as? HTTPURLResponse else {
+                DispatchQueue.main.async {
+                    completion(false, NetworkError.invalidResponse.localizedDescription)
+                }
+                return
+            }
+            
+            switch httpResponse.statusCode {
+            case 200: // Sucesso
+                guard let data = data,
+                      let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                      let newToken = jsonObject["token"] as? String else {
+                    DispatchQueue.main.async {
+                        completion(false, "Invalid data")
+                    }
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    // Armazena o novo token e chama o completion com sucesso
+                    self.token = newToken
+                    completion(true, newToken)
+                }
+                
+            case 401:
+                DispatchQueue.main.async {
+                    completion(false, NetworkError.tokenRefreshFailed.localizedDescription)
+                }
+                
+            default:
+                DispatchQueue.main.async {
+                    completion(false, "Unexpected status code: \(httpResponse.statusCode)")
+                }
+            }
+        }.resume()
+    }
+
+    
+    private func updateToken(completion: @escaping () -> Void) {
+        isTokenRefreshing = true
+        
+        guard let url = URL(string: "\(NetworkConfiguration.baseURL)/auth") else {
+            completion()
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(NetworkConfiguration.apiKey, forHTTPHeaderField: "apikey")
+        
+        let body: [String: Any] = ["token": token ?? ""]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         
         session.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
             
-            if let error = error {
+            defer {
                 DispatchQueue.main.async {
-                    completion(false, nil)
+                    self.isTokenRefreshing = false
+                    completion()
                 }
-                return
             }
             
-            guard let httpResponse = response as? HTTPURLResponse,
-                  httpResponse.statusCode == 200,
-                  let data = data,
-                  let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
-                  let json = jsonObject as? [String: Any],
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                   let newToken = json["token"] as? String else {
                 DispatchQueue.main.async {
-                    completion(false, nil)
+                    self.pendingRequests.forEach { _, completion in
+                        completion(nil, nil, NetworkError.tokenRefreshFailed)
+                    }
+                    self.pendingRequests.removeAll()
                 }
                 return
             }
             
+            self.token = newToken
+            self.tokenExpirationDate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())
+            
             DispatchQueue.main.async {
-                self.token = newToken
-                completion(true, newToken)
+                self.pendingRequests.forEach { request, completion in
+                    self.sendRequest(request, completion: completion)
+                }
+                self.pendingRequests.removeAll()
             }
         }.resume()
     }

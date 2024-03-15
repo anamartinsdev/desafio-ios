@@ -102,11 +102,11 @@ extension IntroView: ViewCode {
             
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            titleLabel.bottomAnchor.constraint(equalTo: subTitleLabel.topAnchor, constant: -12), // ajustar o valor constant conforme necessário
+            titleLabel.bottomAnchor.constraint(equalTo: subTitleLabel.topAnchor, constant: -12),
             
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            subTitleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -12), // ajustar o valor constant conforme necessário
+            subTitleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -12),
             
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),

@@ -1,4 +1,5 @@
 import Foundation
+import CoraSecurity
 
 public protocol CoraStatementListServiceProtocol {
     func fetchList(completion: @escaping (Data?, Error?) -> Void)
@@ -6,9 +7,12 @@ public protocol CoraStatementListServiceProtocol {
 
 public class CoraStatementListService: CoraStatementListServiceProtocol {
     private let networkManager: NetworkManagerProtocol
+    private let keychainManager: KeychainManagerProtocol
     
-    public init(networkManager: NetworkManagerProtocol = NetworkManager()) {
+    public init(networkManager: NetworkManagerProtocol = NetworkManager(),
+                keychainManager: KeychainManagerProtocol = KeychainManager()) {
         self.networkManager = networkManager
+        self.keychainManager = keychainManager
     }
     
     public func fetchList(completion: @escaping (Data?, Error?) -> Void) {
@@ -20,7 +24,8 @@ public class CoraStatementListService: CoraStatementListServiceProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = HttpMethod.get.rawValue
         request.setValue(NetworkConfiguration.apiKey, forHTTPHeaderField: "apikey")
-        request.setValue(networkManager.token, forHTTPHeaderField: "token")
+        let token = keychainManager.retrieve(for: .token)
+        request.setValue(token, forHTTPHeaderField: "Authorization")
         
         networkManager.performRequest(request: request) { data, response, error in
             completion(data, error)

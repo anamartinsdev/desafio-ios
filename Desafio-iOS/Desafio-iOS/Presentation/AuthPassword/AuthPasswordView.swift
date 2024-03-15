@@ -61,7 +61,10 @@ final class AuthPasswordView: UIView, AuthPasswordViewProtocol {
     }()
     
     private var isPasswordVisible = false
-    private var dataString: String = ""
+    private var dataString: String {
+        get { passwordTextField.text ?? "" }
+        set { passwordTextField.text = newValue }
+    }
     
     var actionNext: ((String) -> Void)?
     var actionForgotPassowrd: (() -> Void)?
@@ -88,6 +91,10 @@ final class AuthPasswordView: UIView, AuthPasswordViewProtocol {
         togglePassword()
     }
 
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        dataString = textField.text ?? ""
+    }
+    
     private func togglePassword() {
         isPasswordVisible = !isPasswordVisible
         passwordTextField.isSecureTextEntry = isPasswordVisible
@@ -138,7 +145,7 @@ extension AuthPasswordView: ViewCode {
     
     func setupAdditionalConfiguration() {
         backgroundColor = .white
-        customNavigationBar.backgroundColor = .gray01
+        customNavigationBar.backgroundColor = .gray02
         customNavigationBar.configure(
             title: "Login Cora",
             showBackButton: true,
@@ -152,6 +159,12 @@ extension AuthPasswordView: ViewCode {
         titleLabel.text = "Digite sua senha de acesso"
         //fonte customizada e negrito
         forgotPasswordLabel.text = "Esqueci minha senha"
+        
+        passwordTextField.addTarget(
+            self,
+            action: #selector(textFieldDidChange),
+            for: .editingChanged
+        )
         passwordTextField.delegate = self
         
         nextButton.addTarget(

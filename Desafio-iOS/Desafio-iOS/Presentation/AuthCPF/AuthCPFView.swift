@@ -49,7 +49,10 @@ final class AuthCPFView: UIView, AuthCPFViewProtocol {
         return button
     }()
     
-    private var dataString: String = ""
+    private var dataString: String {
+        get { cpfTextField.text ?? "" }
+        set { cpfTextField.text = newValue }
+    }
     
     var actionNext: ((String) -> Void)?
     var actionBack: (() -> Void)?
@@ -66,6 +69,10 @@ final class AuthCPFView: UIView, AuthCPFViewProtocol {
     @objc private func onTapNext() {
         cpfTextField.resignFirstResponder()
         actionNext?(dataString)
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        dataString = textField.text ?? ""
     }
 }
 
@@ -104,7 +111,7 @@ extension AuthCPFView: ViewCode {
     
     func setupAdditionalConfiguration() {
         backgroundColor = .white
-        customNavigationBar.backgroundColor = .gray01
+        customNavigationBar.backgroundColor = .gray02
         customNavigationBar.configure(
             title: "Login Cora",
             showBackButton: true,
@@ -124,6 +131,13 @@ extension AuthCPFView: ViewCode {
             action: #selector(onTapNext),
             for: .touchUpInside
         )
+        
+        cpfTextField.addTarget(
+            self,
+            action: #selector(textFieldDidChange),
+            for: .editingChanged
+        )
+        cpfTextField.delegate = self
         cpfTextField.becomeFirstResponder()
     }
 }

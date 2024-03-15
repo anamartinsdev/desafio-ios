@@ -5,7 +5,7 @@ public class CoraNavigationBar: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .darkGray
+        label.textColor = UIColor(red: 59, green: 59, blue: 59, alpha: 1)
         return label
     }()
     
@@ -85,7 +85,7 @@ public class CoraNavigationBar: UIView {
         actionImage: UIImage? = nil,
         action: (() -> Void)? = nil
     ) {
-        backgroundColor = .lightGray
+        backgroundColor = UIColor(red: 240, green: 244, blue: 248, alpha: 1)
         titleLabel.text = title
         backButton.isHidden = !showBackButton
         backButton.addTarget(
