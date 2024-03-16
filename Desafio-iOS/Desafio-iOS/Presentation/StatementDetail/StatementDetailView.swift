@@ -141,7 +141,7 @@ extension StatementDetailView: ViewCode {
             
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
 
-            titleStack.topAnchor.constraint(equalTo: contentView.topAnchor),
+            titleStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             titleStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             titleStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             titleStack.heightAnchor.constraint(equalToConstant: 64),
@@ -161,7 +161,7 @@ extension StatementDetailView: ViewCode {
     func setupAdditionalConfiguration() {
         backgroundColor = .white
         titleLabel.text = "Transferência enviada"
-        titleLabel.applyRegularFont(size: 16, color: UIColor(hex: "6B7076"))
+        titleLabel.applyBoldFont(size: 16, color: UIColor(hex: "3B3B3B"))
         titleIcon.tintColor = UIColor(hex: "3B3B3B")
         customNavigationBar.configure(
             title: "Detalhes da transferência",

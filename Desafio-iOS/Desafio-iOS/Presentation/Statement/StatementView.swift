@@ -25,6 +25,12 @@ final class StatementView: UIView, StatementViewProtocol {
         return tableView
     }()
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        
+        return refresh
+    }()
+
     private lazy var customNavigationBar: CoraNavigationBar = {
         let navBar = CoraNavigationBar()
         navBar.translatesAutoresizingMaskIntoConstraints = false
@@ -123,6 +129,7 @@ final class StatementView: UIView, StatementViewProtocol {
         errorLabel.isHidden = false
         errorLabel.text = message
         actionButton.isHidden = false
+        refreshControl.endRefreshing()
     }
     
     func showDataState() {
@@ -133,6 +140,11 @@ final class StatementView: UIView, StatementViewProtocol {
         errorLabel.isHidden = true
         actionButton.isHidden = true
         tableView.isHidden = false
+        refreshControl.endRefreshing()
+    }
+    
+    @objc private func refreshTransactions(_ sender: UIRefreshControl) {
+        actionReload?()
     }
     
     private func changeTab(to index: Int) {
@@ -204,5 +216,10 @@ extension StatementView: ViewCode {
         coraTab.onValueChanged = { [weak self] selectedIndex in
             self?.changeTab(to: selectedIndex)
         }
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Puxe para atualizar")
+        refreshControl.addTarget(self, action: #selector(refreshTransactions(_:)), for: .valueChanged)
+        
+        tableView.refreshControl = refreshControl
     }
 }

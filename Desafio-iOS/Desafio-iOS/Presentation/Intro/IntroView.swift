@@ -9,7 +9,7 @@ protocol IntroViewProtocol: UIView {
 final class IntroView: UIView, IntroViewProtocol {
     private lazy var backgroundImage: UIImageView = {
         let image = UIImageView(image: UIImage(named: "home-banner"))
-        image.contentMode = .scaleAspectFill
+//        image.contentMode = .scaleToFill
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
@@ -49,7 +49,7 @@ final class IntroView: UIView, IntroViewProtocol {
     private lazy var signUpButton: CoraButton = {
         let button = CoraButton(
             title: "Quero fazer parte!",
-            image: UIImage(systemName: "ic_arrow-right"),
+            image: UIImage(named: "ic_arrow-right"),
             style: .secondary
         )
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -102,11 +102,11 @@ extension IntroView: ViewCode {
             backgroundImage.topAnchor.constraint(equalTo: topAnchor),
             backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor),
             backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backgroundImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            backgroundImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.45),
             
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            titleLabel.bottomAnchor.constraint(equalTo: subTitleLabel.topAnchor, constant: -12),
+            titleLabel.bottomAnchor.constraint(equalTo: subTitleLabel.topAnchor, constant: -6),
             
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
