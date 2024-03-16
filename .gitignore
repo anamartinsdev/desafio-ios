@@ -1,6 +1,7 @@
 .DS_Store
 /.build
 /Packages
+!*xcuserdata/
 xcuserdata/
 DerivedData/
 .swiftpm/configuration/registries.json
@@ -15,3 +16,5 @@ xcuserdata/
 *.xcodeproj/
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/*.xcsettings/
+# Xcode user data
+Desafio-iOS/Desafio-iOS.xcodeproj/xcuserdata/
