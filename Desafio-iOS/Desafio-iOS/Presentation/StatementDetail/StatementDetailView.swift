@@ -15,6 +15,16 @@ final class StatementDetailView: UIView, StatementDetailViewProtocol {
         
         return navBar
     }()
+    
+    private lazy var loadingView: CoraSkeletonView = {
+        let view = CoraSkeletonView(
+            frame: .zero,
+            type: .statement
+        )
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +33,7 @@ final class StatementDetailView: UIView, StatementDetailViewProtocol {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.isHidden = true
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -32,6 +43,7 @@ final class StatementDetailView: UIView, StatementDetailViewProtocol {
         let image = UIImage(named: "ic_arrow-up-out")
         let button = UIImageView(image: image)
         button.contentMode = .scaleAspectFit
+        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -63,7 +75,8 @@ final class StatementDetailView: UIView, StatementDetailViewProtocol {
         let button = CoraButton(
             title: "Compartilhar comprovante",
             image: UIImage(named: "ic_share-ios"),
-            style: .primary
+            style: .primary,
+            iconColor: UIColor(hex: "3B3B3B")
         )
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -83,8 +96,24 @@ final class StatementDetailView: UIView, StatementDetailViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func willRemoveSubview(_ subview: UIView) {
+        super.willRemoveSubview(subview)
+        if subview == loadingView {
+            loadingView.stopAnimating()
+        }
+    }
+    
     func configure(with dataSections: [([String], Int?)]) {
-        detailView.configure(with: dataSections)
+        loadingView.isHidden = false
+        loadingView.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            self?.loadingView.stopAnimating()
+            self?.loadingView.isHidden = true
+            self?.titleLabel.isHidden = false
+            self?.titleIcon.isHidden = false
+            self?.detailView.configure(with: dataSections)
+        }
     }
     
     func takeSnapshot() -> UIImage? {
@@ -109,6 +138,7 @@ final class StatementDetailView: UIView, StatementDetailViewProtocol {
 extension StatementDetailView: ViewCode {
     func buildViewHierarchy() {
         addSubview(customNavigationBar)
+        addSubview(loadingView)
         addSubview(scrollView)
         titleStack.addArrangedSubview(titleIcon)
         titleStack.addArrangedSubview(titleLabel)
@@ -126,8 +156,13 @@ extension StatementDetailView: ViewCode {
             ),
             customNavigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            customNavigationBar.heightAnchor.constraint(equalToConstant: 94),
+            customNavigationBar.heightAnchor.constraint(equalToConstant: 104),
 
+            loadingView.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor),
+            loadingView.leftAnchor.constraint(equalTo: leftAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            loadingView.rightAnchor.constraint(equalTo: rightAnchor),
+            
             scrollView.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),

@@ -55,6 +55,7 @@ public class CoraSkeletonView: UIView {
 
 extension CoraSkeletonView {
     private func setupViews() {
+        backgroundColor = .white
         switch type {
         case .statement:
             setupStatementSkeleton()
@@ -69,7 +70,7 @@ extension CoraSkeletonView {
         let topPadding: CGFloat = 20.0
         let spacing: CGFloat = 16.0
         
-        var lastBottomAnchor = topAnchor
+        var lastBottomAnchor: NSLayoutYAxisAnchor = topAnchor
         
         addLine(
             height: 32,
@@ -78,7 +79,9 @@ extension CoraSkeletonView {
             topAnchor: lastBottomAnchor,
             topPadding: topPadding
         )
-        lastBottomAnchor = subviews.last!.bottomAnchor
+        
+        guard let firstBottomAnchor = subviews.last?.bottomAnchor else { return }
+        lastBottomAnchor = firstBottomAnchor
         
         for _ in 0...3 {
             addLine(
@@ -88,7 +91,9 @@ extension CoraSkeletonView {
                 topAnchor: lastBottomAnchor,
                 topPadding: topPadding
             )
-            lastBottomAnchor = subviews.last!.bottomAnchor
+            
+            guard let newBottomAnchor = subviews.last?.bottomAnchor else { return }
+            lastBottomAnchor = newBottomAnchor
             
             addLine(
                 height: 16,
@@ -97,7 +102,9 @@ extension CoraSkeletonView {
                 topAnchor: lastBottomAnchor,
                 topPadding: spacing
             )
-            lastBottomAnchor = subviews.last!.bottomAnchor
+            
+            guard let updatedBottomAnchor = subviews.last?.bottomAnchor else { return }
+            lastBottomAnchor = updatedBottomAnchor
         }
         
         addLine(
@@ -107,7 +114,9 @@ extension CoraSkeletonView {
             topAnchor: lastBottomAnchor,
             topPadding: topPadding
         )
-        lastBottomAnchor = subviews.last!.bottomAnchor
+        
+        guard let anotherBottomAnchor = subviews.last?.bottomAnchor else { return }
+        lastBottomAnchor = anotherBottomAnchor
         
         addLine(
             height: 32,
@@ -116,7 +125,9 @@ extension CoraSkeletonView {
             topAnchor: lastBottomAnchor,
             topPadding: topPadding
         )
-        lastBottomAnchor = subviews.last!.bottomAnchor
+        
+        guard let finalBottomAnchor = subviews.last?.bottomAnchor else { return }
+        lastBottomAnchor = finalBottomAnchor
         
         addLine(
             height: 16,
@@ -125,15 +136,16 @@ extension CoraSkeletonView {
             topAnchor: lastBottomAnchor,
             topPadding: spacing
         )
-        lastBottomAnchor = subviews.last!.bottomAnchor
     }
+
     
     private func setupDetailSkeleton() {
         let leadingPadding: CGFloat = 20.0
         let topPadding: CGFloat = 20.0
         let spacing: CGFloat = 10.0
         
-        var lastBottomAnchor = topAnchor
+        var lastBottomAnchor: NSLayoutYAxisAnchor = topAnchor
+        
         addLine(
             height: 32,
             widthPercent: 0.85,
@@ -141,7 +153,8 @@ extension CoraSkeletonView {
             topAnchor: lastBottomAnchor,
             topPadding: topPadding
         )
-        lastBottomAnchor = subviews.last!.bottomAnchor
+        guard let anotherBottomAnchor = subviews.last?.bottomAnchor else { return }
+        lastBottomAnchor = anotherBottomAnchor
         
         addLine(
             height: 0,
@@ -150,7 +163,8 @@ extension CoraSkeletonView {
             topAnchor: lastBottomAnchor,
             topPadding: 32
         )
-        lastBottomAnchor = subviews.last!.bottomAnchor
+        guard let anotherBottomAnchor = subviews.last?.bottomAnchor else { return }
+        lastBottomAnchor = anotherBottomAnchor
         
         let smallLinesCount = 4
         for _ in 0...smallLinesCount {
@@ -170,7 +184,6 @@ extension CoraSkeletonView {
                 topAnchor: lastBottomAnchor,
                 topPadding: spacing
             )
-            lastBottomAnchor = subviews.last!.bottomAnchor
         }
     }
     
@@ -181,7 +194,7 @@ extension CoraSkeletonView {
         topAnchor: NSLayoutYAxisAnchor,
         topPadding: CGFloat) {
             let line = UIView()
-            line.backgroundColor = .lightGray
+            line.backgroundColor = UIColor(hex: "#DEE4E9")
             line.layer.cornerRadius = 4
             line.translatesAutoresizingMaskIntoConstraints = false
             addSubview(line)
@@ -204,21 +217,20 @@ extension CoraSkeletonView {
         }
     
     private func setupGradientLayer() {
-        let gradientDarkColor = UIColor(
-            white: 0.85,
-            alpha: 1.0
-        ).cgColor
-        let gradientLightColor = UIColor(
-            white: 0.95,
-            alpha: 1.0
-        ).cgColor
+        let baseColor = UIColor(hex: "#FFFFFF")
+        let gradientDarkColor = baseColor.withAlphaComponent(1.0).cgColor
+        let gradientLightColor = baseColor.withAlphaComponent(0.8).cgColor
         
         gradientLayer.colors = [
             gradientDarkColor,
             gradientLightColor,
             gradientDarkColor
         ]
-        gradientLayer.locations = [0.0, 0.5, 1.0]
+        gradientLayer.locations = [
+            0.0,
+            0.5,
+            1.0
+        ]
         
         gradientLayer.startPoint = CGPoint(
             x: 0.0,

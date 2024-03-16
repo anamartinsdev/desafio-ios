@@ -1,6 +1,6 @@
 import UIKit.UIView
 
-public class CoraTab: UIView {
+public class CoraTabView: UIView {
     private let segmentControl: UISegmentedControl
     private let iconImageView: UIImageView
     
@@ -57,14 +57,14 @@ public class CoraTab: UIView {
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            segmentControl.topAnchor.constraint(equalTo: topAnchor),
+            segmentControl.heightAnchor.constraint(equalToConstant: 24),
             segmentControl.leadingAnchor.constraint(equalTo: leadingAnchor),
             segmentControl.trailingAnchor.constraint(
                 equalTo: iconImageView.leadingAnchor,
                 constant: -8
             ),
-            segmentControl.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
+            segmentControl.centerYAnchor.constraint(equalTo: centerYAnchor),
+
             iconImageView.widthAnchor.constraint(equalToConstant: 18),
             iconImageView.heightAnchor.constraint(equalToConstant: 18),
             iconImageView.trailingAnchor.constraint(

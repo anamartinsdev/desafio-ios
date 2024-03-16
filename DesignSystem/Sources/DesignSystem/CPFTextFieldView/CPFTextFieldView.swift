@@ -9,8 +9,8 @@ public class CPFTextFieldView: UIView {
     
     private lazy var errorLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
-        label.applyRegularFont(size: 16, color: .red)
+        label.textAlignment = .left
+        label.applyRegularFont(size: 16, color: UIColor(hex: "DD4848"))
         return label
     }()
     
@@ -110,26 +110,21 @@ extension CPFTextFieldView {
         errorLabel.isHidden = true
     }
     
-    private func formatForCPF(_ cpf: String) -> String {
+    public func formatForCPF(_ cpf: String) -> String {
         let numericText = cpf.filter { $0.isNumber }
-        let cpfDigits = String(numericText.prefix(11))
-
-        let masks = ["###.###.###-##", "###.###.###", "###.###", "###"]
-        var maskedText = ""
-
-        let mask = masks.first {
-            $0.count == cpfDigits.count + (cpfDigits.count / 3) + (cpfDigits.count > 6 ? 1 : 0)
-        } ?? "###.###.###-##"
+        guard numericText.count <= 11 else { return cpf } // Garante que não ultrapasse 11 dígitos
         
-        var index = cpfDigits.startIndex
-        for ch in mask {
-            if ch == "#", index < cpfDigits.endIndex {
-                maskedText.append(cpfDigits[index])
-                index = cpfDigits.index(after: index)
-            } else if ch != "#" {
-                maskedText.append(ch)
+        let formattedText = numericText.enumerated().map { (index, character) -> String in
+            switch index {
+            case 2, 5:
+                return "\(character)."
+            case 8:
+                return "\(character)-"
+            default:
+                return String(character)
             }
-        }
-        return maskedText
+        }.joined()
+        
+        return formattedText
     }
 }

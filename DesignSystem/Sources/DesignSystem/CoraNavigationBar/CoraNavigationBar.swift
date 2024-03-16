@@ -57,7 +57,7 @@ public class CoraNavigationBar: UIView {
             ),
             backButton.centerYAnchor.constraint(
                 equalTo: centerYAnchor,
-                constant: 25
+                constant: 30
             ),
             backButton.widthAnchor.constraint(equalToConstant: 24),
             backButton.heightAnchor.constraint(equalToConstant: 24),
@@ -66,7 +66,7 @@ public class CoraNavigationBar: UIView {
                 equalTo: centerXAnchor),
             titleLabel.centerYAnchor.constraint(
                 equalTo: centerYAnchor,
-                constant: 25
+                constant: 30
             ),
             
             actionButton.trailingAnchor.constraint(
@@ -75,7 +75,7 @@ public class CoraNavigationBar: UIView {
             ),
             actionButton.centerYAnchor.constraint(
                 equalTo: centerYAnchor,
-                constant: 25
+                constant: 30
             ),
             actionButton.widthAnchor.constraint(equalToConstant: 24),
             actionButton.heightAnchor.constraint(equalToConstant: 24),

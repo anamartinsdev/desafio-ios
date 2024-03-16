@@ -33,15 +33,19 @@ public class CoraButton: UIControl {
         }
     }
     
+    private var iconColor: UIColor?
+    
     var actionHandler: (() -> Void)?
     
-    public init(title: String?, image: UIImage?, style: ButtonStyle) {
+    public init(title: String?, image: UIImage?, style: ButtonStyle, iconColor: UIColor?) {
         super.init(frame: .zero)
         setup(
             title: title,
             image: image,
             style: style
         )
+        self.iconColor = iconColor
+        imageView.tintColor = self.iconColor
     }
     
     required init?(coder: NSCoder) {
@@ -67,7 +71,6 @@ public class CoraButton: UIControl {
         titleLabel.textColor = tintColor
         if let buttonImage = buttonImage?.withRenderingMode(.alwaysTemplate) {
             imageView.image = buttonImage
-            imageView.tintColor = tintColor
         }
         self.backgroundColor = backgroundColor
     }

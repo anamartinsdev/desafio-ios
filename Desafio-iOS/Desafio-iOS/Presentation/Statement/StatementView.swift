@@ -44,8 +44,8 @@ final class StatementView: UIView, StatementViewProtocol {
         return navBar
     }()
     
-    private lazy var coraTab: CoraTab = {
-        let tab = CoraTab(
+    private lazy var coraTab: CoraTabView = {
+        let tab = CoraTabView(
             items: ["Tudo", "Entrada", "Saída", "Futuro"],
             icon: UIImage(named: "ic_filter")
         )
@@ -76,7 +76,8 @@ final class StatementView: UIView, StatementViewProtocol {
         let button  = CoraButton(
             title: "Voltar e Tentar Novamente",
             image: nil,
-            style: .primary
+            style: .primary,
+            iconColor: .white
         )
         button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -182,7 +183,7 @@ extension StatementView: ViewCode {
             ),
             customNavigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            customNavigationBar.heightAnchor.constraint(equalToConstant: 94),
+            customNavigationBar.heightAnchor.constraint(equalToConstant: 104),
             
             coraTab.topAnchor.constraint(
                 equalTo: customNavigationBar.bottomAnchor,
@@ -197,8 +198,10 @@ extension StatementView: ViewCode {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             tableView.rightAnchor.constraint(equalTo: rightAnchor),
             
-            loadingView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loadingView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            loadingView.topAnchor.constraint(equalTo: coraTab.bottomAnchor),
+            loadingView.leftAnchor.constraint(equalTo: leftAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            loadingView.rightAnchor.constraint(equalTo: rightAnchor),
             
             errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             errorLabel.centerYAnchor.constraint(equalTo: centerYAnchor),

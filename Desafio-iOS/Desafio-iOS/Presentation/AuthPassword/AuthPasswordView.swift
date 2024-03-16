@@ -56,7 +56,8 @@ final class AuthPasswordView: UIView, AuthPasswordViewProtocol {
         let button = CoraButton(
             title: "Próximo",
             image: UIImage(named: "ic_arrow-right"),
-            style: .primary
+            style: .primary,
+            iconColor: .white
         )
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -127,7 +128,7 @@ extension AuthPasswordView: ViewCode {
             ),
             customNavigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            customNavigationBar.heightAnchor.constraint(equalToConstant: 94),
+            customNavigationBar.heightAnchor.constraint(equalToConstant: 104),
             
             titleLabel.topAnchor.constraint(
                 equalTo: customNavigationBar.bottomAnchor,

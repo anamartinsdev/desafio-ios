@@ -99,23 +99,6 @@ public class StatementTransactionTableViewCell: UITableViewCell {
 
     public func configure(with transaction: Transaction) {
         backgroundColor = .white
-        descriptionLabel.text = transaction.description
-        nameLabel.text = transaction.name
-        
-        timeLabel.text = transaction.time
-        
-        switch transaction.entry {
-        case .debit:
-            amountLabel.textColor = UIColor(hex: "1A93DA")
-            descriptionLabel.textColor = UIColor(hex: "1A93DA")
-            iconImageView.tintColor = UIColor(hex: "1A93DA")
-        case .credit:
-            amountLabel.textColor = UIColor(hex: "3B3B3B")
-            descriptionLabel.textColor = UIColor(hex: "3B3B3B")
-            iconImageView.tintColor = UIColor(hex: "3B3B3B")
-        }
-        
-                
         if transaction.type == .reversed {
             let attributeString = NSAttributedString(
                 string: transaction.amount,
@@ -127,5 +110,50 @@ public class StatementTransactionTableViewCell: UITableViewCell {
             amountLabel.text = transaction.amount
             iconImageView.image = UIImage(named: "ic_arrow-up-out")
         }
+        amountLabel.textColor = evaluateTextForIconAndColor(text: transaction.description).color
+        iconImageView.tintColor = evaluateTextForIconAndColor(text: transaction.description).color
+        iconImageView.image = evaluateTextForIconAndColor(text: transaction.description).icon
+        descriptionLabel.text = transaction.description
+        descriptionLabel.textColor = evaluateTextForIconAndColor(text: transaction.description).color
+        nameLabel.text = transaction.name
+        timeLabel.text = transaction.time
     }
+}
+
+extension StatementTransactionTableViewCell {
+    struct EvaluationResult {
+        var icon: UIImage
+        var color: UIColor
+    }
+
+    func evaluateTextForIconAndColor(text: String) -> EvaluationResult {
+        let lowercasedText = text.lowercased()
+        
+        var icon: UIImage?
+        if lowercasedText.contains("recebida") || lowercasedText.contains("recebido") {
+            icon = UIImage(named: "ic_arrow-down-in")
+        } else if lowercasedText.contains("estornada") || lowercasedText.contains("reembolso") {
+            icon = UIImage(named: "ic_arrow-return")
+        } else if lowercasedText.contains("boleto") {
+            icon = UIImage(named: "ic_bar-code")
+        } else {
+            icon = UIImage(systemName: "cart")
+        }
+        
+        var color: UIColor = UIColor(hex: "3B3B3B")
+        if lowercasedText.contains("boleto") && lowercasedText.contains("deposito") {
+            color = UIColor(hex: "1A93DA")
+        } else if lowercasedText.contains("boleto") && lowercasedText.contains("pago") {
+            color = UIColor(hex: "3B3B3B")
+        } else if lowercasedText.contains("transferencia") && lowercasedText.contains("recebida") {
+            color = UIColor(hex: "1A93DA")
+        } else if lowercasedText.contains("pagamento") && lowercasedText.contains("recebido") {
+            color = UIColor(hex: "1A93DA")
+        } else {
+            color = UIColor(hex: "3B3B3B")
+        }
+        
+        return EvaluationResult(icon: icon ?? UIImage(), color: color)
+    }
+
 }

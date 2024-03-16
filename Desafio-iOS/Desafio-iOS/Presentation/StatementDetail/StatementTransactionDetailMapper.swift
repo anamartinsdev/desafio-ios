@@ -14,7 +14,7 @@ final class StatementTransactionDetailMapper {
         let date = dateFormatter.date(from: transactionDetail.dateEvent)!
         
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        let displayDate = dateFormatter.string(from: date)
+        let displayDate = formattedDateDescription(from: date)
 
         let valueSection: ([String], Int?) = (
             [
@@ -34,8 +34,9 @@ final class StatementTransactionDetailMapper {
         let fromSection: ([String], Int?) = (
             [
                 "De",
-                transactionDetail.sender.bankName,
+                transactionDetail.sender.name,
                 "\(transactionDetail.sender.documentType) \(format(documentNumber: transactionDetail.sender.documentNumber))",
+                transactionDetail.sender.bankName,
                 "Agência \(transactionDetail.sender.agencyNumber) - Conta \(transactionDetail.sender.accountNumber)-\(transactionDetail.sender.accountNumberDigit)"
             ],
             1
@@ -44,8 +45,9 @@ final class StatementTransactionDetailMapper {
         let toSection: ([String], Int?) = (
             [
                 "Para",
-                transactionDetail.recipient.bankName,
+                transactionDetail.recipient.name,
                 "\(transactionDetail.recipient.documentType) \(format(documentNumber: transactionDetail.recipient.documentNumber))",
+                transactionDetail.recipient.bankName,
                 "Agência \(transactionDetail.recipient.agencyNumber) - Conta \(transactionDetail.recipient.accountNumber)-\(transactionDetail.recipient.accountNumberDigit)"
             ],
             1
@@ -94,4 +96,30 @@ final class StatementTransactionDetailMapper {
             )
         }
     }
+    
+    private static func formattedDateDescription(from date: Date) -> String {
+            let calendar = Calendar.current
+            if calendar.isDateInToday(date) {
+                return "Hoje - \(formatDate(date))"
+            } else if calendar.isDateInYesterday(date) {
+                return "Ontem - \(formatDate(date))"
+            } else {
+                return "\(weekday(for: date)) - \(formatDate(date))"
+            }
+        }
+
+        private static func formatDate(_ date: Date) -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "pt_BR")
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            return dateFormatter.string(from: date)
+        }
+
+        private static func weekday(for date: Date) -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "pt_BR")
+            dateFormatter.dateFormat = "EEEE"
+            return dateFormatter.string(from: date).capitalized
+        }
+
 }

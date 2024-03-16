@@ -42,7 +42,8 @@ final class AuthCPFView: UIView, AuthCPFViewProtocol {
         let button = CoraButton(
             title: "Próximo",
             image: UIImage(named: "ic_arrow-right"),
-            style: .primary
+            style: .primary,
+            iconColor: .white
         )
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -67,7 +68,7 @@ final class AuthCPFView: UIView, AuthCPFViewProtocol {
     }
     
     @objc private func onTapNext() {
-        cpfTextField.resignFirstResponder()
+        dataString = cpfTextField.getRawCPFNumber()
         actionNext?(dataString)
     }
     
@@ -79,6 +80,7 @@ final class AuthCPFView: UIView, AuthCPFViewProtocol {
         let isValidCPF = cpfTextField.isCPFValid(dataString)
         nextButton.isEnabled = isValidCPF
         nextButton.apply(style: isValidCPF ? .primary : .disable)
+        textField.text = cpfTextField.formatForCPF(dataString)
     }
 
 }
@@ -100,7 +102,7 @@ extension AuthCPFView: ViewCode {
             ),
             customNavigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            customNavigationBar.heightAnchor.constraint(equalToConstant: 94),
+            customNavigationBar.heightAnchor.constraint(equalToConstant: 104),
             
             titleLabel.topAnchor.constraint(
                 equalTo: customNavigationBar.bottomAnchor,
@@ -212,6 +214,6 @@ extension AuthCPFView: UITextFieldDelegate {
         
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         
-        return updatedText.count <= 11 && string.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+        return updatedText.count <= 14 && string.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
     }
 }

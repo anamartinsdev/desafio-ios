@@ -28,7 +28,8 @@ final class ErrorView: UIView, ErrorViewProtocol {
         let button  = CoraButton(
             title: "Voltar e Tentar Novamente",
             image: nil,
-            style: .primary
+            style: .primary,
+            iconColor: .white
         )
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

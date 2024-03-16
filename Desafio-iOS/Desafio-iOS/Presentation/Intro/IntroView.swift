@@ -49,7 +49,8 @@ final class IntroView: UIView, IntroViewProtocol {
         let button = CoraButton(
             title: "Quero fazer parte!",
             image: UIImage(named: "ic_arrow-right"),
-            style: .secondary
+            style: .secondary,
+            iconColor: UIColor(hex: "FE3E6D")
         )
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -59,7 +60,8 @@ final class IntroView: UIView, IntroViewProtocol {
         let button = CoraButton(
             title: "Já sou cliente",
             image: nil,
-            style: .primary
+            style: .primary,
+            iconColor: .white
         )
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
