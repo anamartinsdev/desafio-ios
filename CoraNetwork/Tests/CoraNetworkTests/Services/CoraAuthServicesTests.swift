@@ -43,28 +43,4 @@ final class CoraAuthServicesTests: XCTestCase {
         
         waitForExpectations(timeout: 1, handler: nil)
     }
-    
-    func testRefreshTokenSuccess() {
-        networkManagerMock.shouldUpdateTokenSucceed = true
-        
-        let expectation = self.expectation(description: "Token refresh success")
-        authService.refreshToken { result in
-            XCTAssertTrue(result)
-            expectation.fulfill()
-        }
-        
-        waitForExpectations(timeout: 1, handler: nil)
-    }
-    
-    func testRefreshTokenFailure() {
-        networkManagerMock.shouldAuthenticateSucceed = true
-        
-        let expectation = self.expectation(description: "Token refresh failure")
-        authService.refreshToken { result in
-            XCTAssertFalse(result)
-            expectation.fulfill()
-        }
-        
-        waitForExpectations(timeout: 1, handler: nil)
-    }
 }

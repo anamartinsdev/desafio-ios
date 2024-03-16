@@ -8,7 +8,8 @@ final class CoraButtonSnapshotTests: XCTestCase {
         let button = CoraButton(
             title: "Próximo",
             image: nil,
-            style: .primary
+            style: .primary,
+            iconColor: .white
         )
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
         assertSnapshot(matching: button, as: .image)
@@ -18,7 +19,8 @@ final class CoraButtonSnapshotTests: XCTestCase {
         let button = CoraButton(
             title: "Próximo",
             image: UIImage(systemName: "arrow.forward"),
-            style: .primary
+            style: .primary,
+            iconColor: .white
         )
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
         assertSnapshot(matching: button, as: .image)
@@ -28,7 +30,8 @@ final class CoraButtonSnapshotTests: XCTestCase {
         let button = CoraButton(
             title: "Próximo",
             image: nil,
-            style: .secondary
+            style: .secondary,
+            iconColor: .systemPink
         )
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
         assertSnapshot(matching: button, as: .image)
@@ -38,7 +41,8 @@ final class CoraButtonSnapshotTests: XCTestCase {
         let button = CoraButton(
             title: "Próximo",
             image: UIImage(systemName: "arrow.forward"),
-            style: .secondary
+            style: .secondary,
+            iconColor: .systemPink
         )
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
         assertSnapshot(matching: button, as: .image)
@@ -48,7 +52,8 @@ final class CoraButtonSnapshotTests: XCTestCase {
         let button = CoraButton(
             title: "Próximo",
             image: nil,
-            style: .disable
+            style: .disable,
+            iconColor: .white
         )
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
         assertSnapshot(matching: button, as: .image)
@@ -58,7 +63,8 @@ final class CoraButtonSnapshotTests: XCTestCase {
         let button = CoraButton(
             title: "Próximo",
             image: UIImage(systemName: "arrow.forward"),
-            style: .disable
+            style: .disable,
+            iconColor: .white
         )
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
         assertSnapshot(matching: button, as: .image)

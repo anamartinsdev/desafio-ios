@@ -52,15 +52,20 @@
 		A70CB9F12BA47CE3005E7CC3 /* CoraSecurity in Frameworks */ = {isa = PBXBuildFile; productRef = A70CB9F02BA47CE3005E7CC3 /* CoraSecurity */; };
 		A70CB9F82BA53AC5005E7CC3 /* TransactionListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9F72BA53AC5005E7CC3 /* TransactionListResponse.swift */; };
 		A70CB9FA2BA53F08005E7CC3 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9F92BA53F08005E7CC3 /* NSLayoutConstraint.swift */; };
+		A70CB9FF2BA56779005E7CC3 /* KeychainManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9FE2BA56779005E7CC3 /* KeychainManagerMock.swift */; };
+		A70CBA022BA567B2005E7CC3 /* AuthUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CBA012BA567B2005E7CC3 /* AuthUseCaseTests.swift */; };
+		A70CBA042BA56862005E7CC3 /* CoraAuthServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CBA032BA56862005E7CC3 /* CoraAuthServiceMock.swift */; };
+		A70CBA062BA56890005E7CC3 /* AuthUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CBA052BA56890005E7CC3 /* AuthUseCaseMock.swift */; };
+		A70CBA082BA568D0005E7CC3 /* AuthRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CBA072BA568D0005E7CC3 /* AuthRepositoryTests.swift */; };
+		A70CBA0C2BA56988005E7CC3 /* CoraStatementListServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CBA0B2BA56988005E7CC3 /* CoraStatementListServiceMock.swift */; };
+		A70CBA0F2BA569A3005E7CC3 /* StatementRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CBA0E2BA569A3005E7CC3 /* StatementRepositoryTests.swift */; };
+		A70CBA132BA56A50005E7CC3 /* CoraStatementDetailsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CBA122BA56A50005E7CC3 /* CoraStatementDetailsServiceMock.swift */; };
+		A70CBA152BA56A5A005E7CC3 /* TransactionDetailRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CBA142BA56A5A005E7CC3 /* TransactionDetailRepositoryTests.swift */; };
 		A72490492B9D094700A77562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72490482B9D094700A77562 /* AppDelegate.swift */; };
 		A724904B2B9D094700A77562 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724904A2B9D094700A77562 /* SceneDelegate.swift */; };
 		A72490502B9D094700A77562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A724904E2B9D094700A77562 /* Main.storyboard */; };
-		A72490532B9D094700A77562 /* Desafio_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A72490512B9D094700A77562 /* Desafio_iOS.xcdatamodeld */; };
 		A72490552B9D094800A77562 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A72490542B9D094800A77562 /* Assets.xcassets */; };
 		A72490582B9D094800A77562 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A72490562B9D094800A77562 /* LaunchScreen.storyboard */; };
-		A72490632B9D094900A77562 /* Desafio_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72490622B9D094900A77562 /* Desafio_iOSTests.swift */; };
-		A724906D2B9D094900A77562 /* Desafio_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724906C2B9D094900A77562 /* Desafio_iOSUITests.swift */; };
-		A724906F2B9D094900A77562 /* Desafio_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724906E2B9D094900A77562 /* Desafio_iOSUITestsLaunchTests.swift */; };
 		A724907E2B9FE95200A77562 /* AuthCPFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724907D2B9FE95200A77562 /* AuthCPFView.swift */; };
 		A72490812B9FE9B300A77562 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A72490802B9FE9B300A77562 /* DesignSystem */; };
 /* End PBXBuildFile section */
@@ -125,19 +130,25 @@
 		A70CB9ED2BA3EDFF005E7CC3 /* ErrorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorFactory.swift; sourceTree = "<group>"; };
 		A70CB9F72BA53AC5005E7CC3 /* TransactionListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListResponse.swift; sourceTree = "<group>"; };
 		A70CB9F92BA53F08005E7CC3 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
+		A70CB9FD2BA56779005E7CC3 /* Desafio-iOSTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Desafio-iOSTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		A70CB9FE2BA56779005E7CC3 /* KeychainManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManagerMock.swift; sourceTree = "<group>"; };
+		A70CBA012BA567B2005E7CC3 /* AuthUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCaseTests.swift; sourceTree = "<group>"; };
+		A70CBA032BA56862005E7CC3 /* CoraAuthServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoraAuthServiceMock.swift; sourceTree = "<group>"; };
+		A70CBA052BA56890005E7CC3 /* AuthUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCaseMock.swift; sourceTree = "<group>"; };
+		A70CBA072BA568D0005E7CC3 /* AuthRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryTests.swift; sourceTree = "<group>"; };
+		A70CBA0B2BA56988005E7CC3 /* CoraStatementListServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoraStatementListServiceMock.swift; sourceTree = "<group>"; };
+		A70CBA0E2BA569A3005E7CC3 /* StatementRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementRepositoryTests.swift; sourceTree = "<group>"; };
+		A70CBA122BA56A50005E7CC3 /* CoraStatementDetailsServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoraStatementDetailsServiceMock.swift; sourceTree = "<group>"; };
+		A70CBA142BA56A5A005E7CC3 /* TransactionDetailRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailRepositoryTests.swift; sourceTree = "<group>"; };
 		A72490452B9D094700A77562 /* Desafio-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72490482B9D094700A77562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A724904A2B9D094700A77562 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A724904F2B9D094700A77562 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A72490522B9D094700A77562 /* Desafio_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Desafio_iOS.xcdatamodel; sourceTree = "<group>"; };
 		A72490542B9D094800A77562 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A72490572B9D094800A77562 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A72490592B9D094800A77562 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A724905E2B9D094900A77562 /* Desafio-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A72490622B9D094900A77562 /* Desafio_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_iOSTests.swift; sourceTree = "<group>"; };
 		A72490682B9D094900A77562 /* Desafio-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Desafio-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A724906C2B9D094900A77562 /* Desafio_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_iOSUITests.swift; sourceTree = "<group>"; };
-		A724906E2B9D094900A77562 /* Desafio_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desafio_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A724907D2B9FE95200A77562 /* AuthCPFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCPFView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -312,12 +323,84 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		A70CB9FB2BA56758005E7CC3 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A70CBA102BA56A3E005E7CC3 /* TransactionDetail */,
+				A70CBA092BA56976005E7CC3 /* Statement */,
+				A70CBA002BA567AC005E7CC3 /* Auth */,
+				A70CB9FC2BA56762005E7CC3 /* Mocks */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A70CB9FC2BA56762005E7CC3 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A70CB9FE2BA56779005E7CC3 /* KeychainManagerMock.swift */,
+				A70CB9FD2BA56779005E7CC3 /* Desafio-iOSTests-Bridging-Header.h */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		A70CBA002BA567AC005E7CC3 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A70CBA0D2BA5698B005E7CC3 /* Mock */,
+				A70CBA012BA567B2005E7CC3 /* AuthUseCaseTests.swift */,
+				A70CBA072BA568D0005E7CC3 /* AuthRepositoryTests.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A70CBA092BA56976005E7CC3 /* Statement */ = {
+			isa = PBXGroup;
+			children = (
+				A70CBA0A2BA5697C005E7CC3 /* Mock */,
+				A70CBA0E2BA569A3005E7CC3 /* StatementRepositoryTests.swift */,
+			);
+			path = Statement;
+			sourceTree = "<group>";
+		};
+		A70CBA0A2BA5697C005E7CC3 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				A70CBA0B2BA56988005E7CC3 /* CoraStatementListServiceMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		A70CBA0D2BA5698B005E7CC3 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				A70CBA032BA56862005E7CC3 /* CoraAuthServiceMock.swift */,
+				A70CBA052BA56890005E7CC3 /* AuthUseCaseMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		A70CBA102BA56A3E005E7CC3 /* TransactionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A70CBA112BA56A47005E7CC3 /* Mocks */,
+				A70CBA142BA56A5A005E7CC3 /* TransactionDetailRepositoryTests.swift */,
+			);
+			path = TransactionDetail;
+			sourceTree = "<group>";
+		};
+		A70CBA112BA56A47005E7CC3 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A70CBA122BA56A50005E7CC3 /* CoraStatementDetailsServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		A724903C2B9D094700A77562 = {
 			isa = PBXGroup;
 			children = (
 				A72490472B9D094700A77562 /* Desafio-iOS */,
 				A72490612B9D094900A77562 /* Desafio-iOSTests */,
-				A724906B2B9D094900A77562 /* Desafio-iOSUITests */,
 				A72490462B9D094700A77562 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -345,7 +428,6 @@
 				A72490542B9D094800A77562 /* Assets.xcassets */,
 				A72490562B9D094800A77562 /* LaunchScreen.storyboard */,
 				A72490592B9D094800A77562 /* Info.plist */,
-				A72490512B9D094700A77562 /* Desafio_iOS.xcdatamodeld */,
 			);
 			path = "Desafio-iOS";
 			sourceTree = "<group>";
@@ -353,18 +435,9 @@
 		A72490612B9D094900A77562 /* Desafio-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				A72490622B9D094900A77562 /* Desafio_iOSTests.swift */,
+				A70CB9FB2BA56758005E7CC3 /* Domain */,
 			);
 			path = "Desafio-iOSTests";
-			sourceTree = "<group>";
-		};
-		A724906B2B9D094900A77562 /* Desafio-iOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A724906C2B9D094900A77562 /* Desafio_iOSUITests.swift */,
-				A724906E2B9D094900A77562 /* Desafio_iOSUITestsLaunchTests.swift */,
-			);
-			path = "Desafio-iOSUITests";
 			sourceTree = "<group>";
 		};
 		A724907B2B9FE90A00A77562 /* Presentation */ = {
@@ -469,6 +542,7 @@
 					};
 					A724905D2B9D094900A77562 = {
 						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
 						TestTargetID = A72490442B9D094700A77562;
 					};
 					A72490672B9D094900A77562 = {
@@ -544,7 +618,6 @@
 				A70CB9C62BA3BD95005E7CC3 /* TransactionDetail.swift in Sources */,
 				A70CB9C02BA370AD005E7CC3 /* StatementDetailFactory.swift in Sources */,
 				A70CB9F82BA53AC5005E7CC3 /* TransactionListResponse.swift in Sources */,
-				A72490532B9D094700A77562 /* Desafio_iOS.xcdatamodeld in Sources */,
 				A70CB9BA2BA3708C005E7CC3 /* StatementDetailViewModel.swift in Sources */,
 				A70CB9CB2BA3D302005E7CC3 /* StatementTransactionDetailMapper.swift in Sources */,
 				A70CB9A02BA276BD005E7CC3 /* AuthPasswordFactory.swift in Sources */,
@@ -587,7 +660,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A72490632B9D094900A77562 /* Desafio_iOSTests.swift in Sources */,
+				A70CB9FF2BA56779005E7CC3 /* KeychainManagerMock.swift in Sources */,
+				A70CBA062BA56890005E7CC3 /* AuthUseCaseMock.swift in Sources */,
+				A70CBA0F2BA569A3005E7CC3 /* StatementRepositoryTests.swift in Sources */,
+				A70CBA132BA56A50005E7CC3 /* CoraStatementDetailsServiceMock.swift in Sources */,
+				A70CBA042BA56862005E7CC3 /* CoraAuthServiceMock.swift in Sources */,
+				A70CBA022BA567B2005E7CC3 /* AuthUseCaseTests.swift in Sources */,
+				A70CBA152BA56A5A005E7CC3 /* TransactionDetailRepositoryTests.swift in Sources */,
+				A70CBA0C2BA56988005E7CC3 /* CoraStatementListServiceMock.swift in Sources */,
+				A70CBA082BA568D0005E7CC3 /* AuthRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,8 +676,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A724906F2B9D094900A77562 /* Desafio_iOSUITestsLaunchTests.swift in Sources */,
-				A724906D2B9D094900A77562 /* Desafio_iOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,6 +902,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V88V9K83N5;
@@ -832,6 +912,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "anamartinspessoa.Desafio-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Desafio-iOSTests/Domain/Mocks/Desafio-iOSTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Desafio-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Desafio-iOS";
@@ -843,6 +925,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V88V9K83N5;
@@ -852,6 +935,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "anamartinspessoa.Desafio-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Desafio-iOSTests/Domain/Mocks/Desafio-iOSTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Desafio-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Desafio-iOS";
@@ -968,19 +1052,6 @@
 			productName = DesignSystem;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		A72490512B9D094700A77562 /* Desafio_iOS.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A72490522B9D094700A77562 /* Desafio_iOS.xcdatamodel */,
-			);
-			currentVersion = A72490522B9D094700A77562 /* Desafio_iOS.xcdatamodel */;
-			path = Desafio_iOS.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A724903D2B9D094700A77562 /* Project object */;
 }
