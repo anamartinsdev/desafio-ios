@@ -16,16 +16,22 @@ protocol StatementViewProtocol: UIView {
 final class StatementView: UIView, StatementViewProtocol {
 
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(
+            frame: .zero,
+            style: .grouped
+        )
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
-        tableView.register(StatementTransactionTableViewCell.self, forCellReuseIdentifier: "StatementTransactionTableViewCell")
+        tableView.register(
+            StatementTransactionTableViewCell.self,
+            forCellReuseIdentifier: "StatementTransactionTableViewCell"
+        )
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         return tableView
     }()
     
-    lazy var refreshControl: UIRefreshControl = {
+    private lazy var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
         
         return refresh
@@ -41,7 +47,7 @@ final class StatementView: UIView, StatementViewProtocol {
     private lazy var coraTab: CoraTab = {
         let tab = CoraTab(
             items: ["Tudo", "Entrada", "Saída", "Futuro"],
-            icon: UIImage(systemName: "ic_filter")
+            icon: UIImage(named: "ic_filter")
         )
         tab.translatesAutoresizingMaskIntoConstraints = false
         
@@ -49,7 +55,10 @@ final class StatementView: UIView, StatementViewProtocol {
     }()
     
     private lazy var loadingView: CoraSkeletonView = {
-        let view = CoraSkeletonView(frame: .zero, type: .statement)
+        let view = CoraSkeletonView(
+            frame: .zero,
+            type: .statement
+        )
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -103,7 +112,10 @@ final class StatementView: UIView, StatementViewProtocol {
     func takeSnapshot() -> UIImage? {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         let image = renderer.image { _ in
-            drawHierarchy(in: bounds, afterScreenUpdates: true)
+            drawHierarchy(
+                in: bounds,
+                afterScreenUpdates: true
+            )
         }
         
         return image
@@ -164,12 +176,18 @@ extension StatementView: ViewCode {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            customNavigationBar.topAnchor.constraint(equalTo: topAnchor, constant: -10),
+            customNavigationBar.topAnchor.constraint(
+                equalTo: topAnchor,
+                constant: -10
+            ),
             customNavigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
             customNavigationBar.heightAnchor.constraint(equalToConstant: 94),
             
-            coraTab.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor, constant: 8),
+            coraTab.topAnchor.constraint(
+                equalTo: customNavigationBar.bottomAnchor,
+                constant: 8
+            ),
             coraTab.leftAnchor.constraint(equalTo: leftAnchor),
             coraTab.heightAnchor.constraint(equalToConstant: 44),
             coraTab.rightAnchor.constraint(equalTo: rightAnchor),
@@ -184,12 +202,27 @@ extension StatementView: ViewCode {
             
             errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             errorLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            errorLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
-            errorLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
+            errorLabel.leftAnchor.constraint(
+                equalTo: leftAnchor,
+                constant: 20
+            ),
+            errorLabel.rightAnchor.constraint(
+                equalTo: rightAnchor,
+                constant: -20
+            ),
             actionButton.heightAnchor.constraint(equalToConstant: 64),
-            actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            actionButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
+            actionButton.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 24
+            ),
+            actionButton.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -24
+            ),
+            actionButton.bottomAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.bottomAnchor,
+                constant: -16
+            )
         ])
     }
     
@@ -203,6 +236,7 @@ extension StatementView: ViewCode {
         
         customNavigationBar.configure(
             title: "Extrato",
+            titleColor: UIColor(hex: "3B3B3B"),
             showBackButton: true,
             backAction: { [weak self] in
                 self?.actionBack?()
@@ -218,7 +252,11 @@ extension StatementView: ViewCode {
         }
         
         refreshControl.attributedTitle = NSAttributedString(string: "Puxe para atualizar")
-        refreshControl.addTarget(self, action: #selector(refreshTransactions(_:)), for: .valueChanged)
+        refreshControl.addTarget(
+            self,
+            action: #selector(refreshTransactions(_:)),
+            for: .valueChanged
+        )
         
         tableView.refreshControl = refreshControl
     }

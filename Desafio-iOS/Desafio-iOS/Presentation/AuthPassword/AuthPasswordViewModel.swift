@@ -24,10 +24,16 @@ final class AuthPasswordViewModel: AuthPasswordViewModelProtocol {
     
     func onTapNext(data: String) {
         do {
-            try? keychainManager.save(data, for: .password)
+            try? keychainManager.save(
+                data,
+                for: .password
+            )
             repository.authenticate { [weak self] result, token in
                 if let token = token {
-                    try? self?.keychainManager.save(token, for: .token)
+                    try? self?.keychainManager.save(
+                        token,
+                        for: .token
+                    )
                 }
                 if result {
                     self?.router.navigateToStatement()

@@ -10,7 +10,10 @@ public class CoraNavigationBar: UIView {
     
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "ic_chevron-left"), for: .normal)
+        button.setImage(
+            UIImage(named: "ic_chevron-left"),
+            for: .normal
+        )
         button.tintColor = .systemPink
         button.isHidden = true
         return button
@@ -18,7 +21,7 @@ public class CoraNavigationBar: UIView {
     
     private lazy var actionButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = .systemPink
+        button.tintColor = UIColor(hex: "FE3E6D")
         button.isHidden = true
         return button
     }()
@@ -89,6 +92,7 @@ public class CoraNavigationBar: UIView {
     
     public func configure(
         title: String,
+        titleColor: UIColor? = UIColor(hex: "6B7076"),
         showBackButton: Bool = true,
         backAction: (() -> Void)? = nil,
         actionImage: UIImage? = nil,
@@ -96,7 +100,10 @@ public class CoraNavigationBar: UIView {
     ) {
         backgroundColor = .clear
         titleLabel.text = title
-        titleLabel.applyRegularFont(size: 14, color: UIColor(hex: "6B7076"))
+        titleLabel.applyRegularFont(
+            size: 14,
+            color: titleColor
+        )
         backgroundColor = UIColor(hex: "F0F4F8")
         backButton.isHidden = !showBackButton
         backButton.addTarget(

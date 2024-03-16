@@ -37,7 +37,11 @@ public class CoraButton: UIControl {
     
     public init(title: String?, image: UIImage?, style: ButtonStyle) {
         super.init(frame: .zero)
-        setup(title: title, image: image, style: style)
+        setup(
+            title: title,
+            image: image,
+            style: style
+        )
     }
     
     required init?(coder: NSCoder) {
@@ -57,7 +61,7 @@ public class CoraButton: UIControl {
             backgroundColor = .white
         case .disable:
             tintColor = .white
-            backgroundColor = UIColor(hex: "979797")
+            backgroundColor = UIColor(hex: "C7CBCF")
         }
         
         titleLabel.textColor = tintColor
@@ -121,3 +125,4 @@ extension CoraButton {
         actionHandler?()
     }
 }
+

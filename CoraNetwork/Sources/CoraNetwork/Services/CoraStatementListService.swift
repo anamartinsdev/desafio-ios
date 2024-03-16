@@ -23,9 +23,15 @@ public class CoraStatementListService: CoraStatementListServiceProtocol {
         
         var request = URLRequest(url: url)
         request.httpMethod = HttpMethod.get.rawValue
-        request.setValue(NetworkConfiguration.apiKey, forHTTPHeaderField: "apikey")
+        request.setValue(
+            NetworkConfiguration.apiKey,
+            forHTTPHeaderField: "apikey"
+        )
         let token = keychainManager.retrieve(for: .token)
-        request.setValue(token, forHTTPHeaderField: "Authorization")
+        request.setValue(
+            token,
+            forHTTPHeaderField: "Authorization"
+        )
         
         networkManager.performRequest(request: request) { data, response, error in
             completion(data, error)

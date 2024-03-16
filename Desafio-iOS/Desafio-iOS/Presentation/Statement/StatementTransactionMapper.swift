@@ -6,7 +6,10 @@ final class StatementTransactionMapper {
         return response.results.map { group in
             let transactions = group.items.map { map(item: $0) }
             let formattedDate = convertDate(group.date)
-            return TransactionSection(date: formattedDate, transactions: transactions)
+            return TransactionSection(
+                date: formattedDate,
+                transactions: transactions
+            )
         }
     }
     
@@ -19,7 +22,15 @@ final class StatementTransactionMapper {
         
         let entry = item.entry.lowercased() == "debit" ? TransactionEntryType.debit :TransactionEntryType.credit
         
-        return Transaction(id: item.id, description: item.description, name: item.name, time: time, amount: amount, type: type, entry: entry)
+        return Transaction(
+            id: item.id,
+            description: item.description,
+            name: item.name,
+            time: time,
+            amount: amount,
+            type: type,
+            entry: entry
+        )
     }
     
     private func formatDateEvent(_ dateEvent: String) -> String {

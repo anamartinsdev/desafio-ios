@@ -2,8 +2,18 @@ import UIKit
 
 public class CPFTextFieldView: UIView {
     
-    public let textField = UITextField()
-    private let errorLabel = UILabel()
+    public lazy var textField: UITextField = {
+        let textField = UITextField()
+        return textField
+    }()
+    
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.applyRegularFont(size: 16, color: .red)
+        return label
+    }()
+    
     private var rawCPFString = ""
     
     override init(frame: CGRect) {
@@ -34,8 +44,12 @@ public class CPFTextFieldView: UIView {
         }
         
         let firstNineDigits = Array(numbers.prefix(9))
-        let firstVerifier = calculateDigit(with: [10, 9, 8, 7, 6, 5, 4, 3, 2])
-        let secondVerifier = calculateDigit(with: [11] + [10, 9, 8, 7, 6, 5, 4, 3, 2])
+        let firstVerifier = calculateDigit(
+            with: [10, 9, 8, 7, 6, 5, 4, 3, 2]
+        )
+        let secondVerifier = calculateDigit(
+            with: [11] + [10, 9, 8, 7, 6, 5, 4, 3, 2]
+        )
         
         return firstVerifier == numbers[9] && secondVerifier == numbers[10]
     }
@@ -49,11 +63,8 @@ extension CPFTextFieldView {
         addSubview(textField)
         addSubview(errorLabel)
         
-        errorLabel.textColor = .red
-        errorLabel.applyRegularFont(size: 14, color: .red)
         errorLabel.isHidden = true
         
-        // Set up constraints
         textField.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -62,7 +73,10 @@ extension CPFTextFieldView {
             textField.leadingAnchor.constraint(equalTo: leadingAnchor),
             textField.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            errorLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 5),
+            errorLabel.topAnchor.constraint(
+                equalTo: textField.bottomAnchor,
+                constant: 5
+            ),
             errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             errorLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -70,7 +84,11 @@ extension CPFTextFieldView {
     }
     
     private func setupTextField() {
-        textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        textField.addTarget(
+            self,
+            action: #selector(textFieldEditingChanged),
+            for: .editingChanged
+        )
     }
     
     @objc public func textFieldEditingChanged(_ textField: UITextField) {
@@ -99,7 +117,9 @@ extension CPFTextFieldView {
         let masks = ["###.###.###-##", "###.###.###", "###.###", "###"]
         var maskedText = ""
 
-        let mask = masks.first { $0.count == cpfDigits.count + (cpfDigits.count / 3) + (cpfDigits.count > 6 ? 1 : 0) } ?? "###.###.###-##"
+        let mask = masks.first {
+            $0.count == cpfDigits.count + (cpfDigits.count / 3) + (cpfDigits.count > 6 ? 1 : 0)
+        } ?? "###.###.###-##"
         
         var index = cpfDigits.startIndex
         for ch in mask {
@@ -112,7 +132,4 @@ extension CPFTextFieldView {
         }
         return maskedText
     }
-
-
-    
 }

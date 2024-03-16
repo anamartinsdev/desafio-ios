@@ -26,7 +26,7 @@ final class StatementViewController: UIViewController {
 
     private func setupView() {
         contentView.tableView.estimatedRowHeight = 100
-        contentView.tableView.rowHeight = UITableView.automaticDimension
+        contentView.tableView.rowHeight = 100
         
         contentView.tableView.delegate = self
         contentView.tableView.dataSource = self
@@ -115,8 +115,14 @@ extension StatementViewController: UITableViewDataSource {
         headerView.addSubview(headerLabel)
 
         NSLayoutConstraint.activate([
-            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16),
-            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
+            headerLabel.leadingAnchor.constraint(
+                equalTo: headerView.leadingAnchor,
+                constant: 16
+            ),
+            headerLabel.trailingAnchor.constraint(
+                equalTo: headerView.trailingAnchor,
+                constant: -16
+            ),
             headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor),
             headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor)
         ])
@@ -126,8 +132,11 @@ extension StatementViewController: UITableViewDataSource {
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StatementTransactionTableViewCell", for: indexPath) as! StatementTransactionTableViewCell
-        
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "StatementTransactionTableViewCell",
+            for: indexPath
+        ) as! StatementTransactionTableViewCell
+        cell.selectionStyle = .none
         let transaction = transactionSections[indexPath.section].transactions[indexPath.row]
         cell.configure(with: transaction)
         
@@ -137,13 +146,8 @@ extension StatementViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 36
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
-    }
 }
 
-// MARK: - UITableViewDelegate
 extension StatementViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedTransaction = transactionSections[indexPath.section].transactions[indexPath.row]

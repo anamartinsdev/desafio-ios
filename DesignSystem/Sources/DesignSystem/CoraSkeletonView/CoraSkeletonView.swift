@@ -9,8 +9,14 @@ public class CoraSkeletonView: UIView {
     
     private var type: SkeletonType = SkeletonType.statement
     private var gradientLayer = CAGradientLayer()
-    private var gradientBackgroundColor: CGColor = UIColor(white: 0.85, alpha: 1.0).cgColor
-    private var gradientMovingColor: CGColor = UIColor(white: 0.75, alpha: 1.0).cgColor
+    private var gradientBackgroundColor: CGColor = UIColor(
+        white: 0.85,
+        alpha: 1.0
+    ).cgColor
+    private var gradientMovingColor: CGColor = UIColor(
+        white: 0.75,
+        alpha: 1.0
+    ).cgColor
     
     public init(frame: CGRect, type: SkeletonType) {
         self.type = type
@@ -22,6 +28,32 @@ public class CoraSkeletonView: UIView {
         super.init(coder: coder)
     }
     
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = CGRect(x: -bounds.width, y: 0, width: bounds.width * 3, height: bounds.height)
+    }
+    
+    public func startAnimating() {
+        let animation = CABasicAnimation(keyPath: "locations")
+        
+        animation.fromValue = [-1.0, -0.5, 0.0]
+        animation.toValue = [1.0, 1.5, 2.0]
+        animation.duration = 1.2
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.repeatCount = .infinity
+        
+        gradientLayer.add(
+            animation,
+            forKey: "shimmer"
+        )
+    }
+    
+    public func stopAnimating() {
+        gradientLayer.removeAllAnimations()
+    }
+}
+
+extension CoraSkeletonView {
     private func setupViews() {
         switch type {
         case .statement:
@@ -155,46 +187,58 @@ public class CoraSkeletonView: UIView {
             addSubview(line)
             
             NSLayoutConstraint.activate([
-                line.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingPadding),
-                line.topAnchor.constraint(equalTo: topAnchor, constant: topPadding),
-                line.widthAnchor.constraint(equalTo: widthAnchor, multiplier: widthPercent),
+                line.leadingAnchor.constraint(
+                    equalTo: leadingAnchor,
+                    constant: leadingPadding
+                ),
+                line.topAnchor.constraint(
+                    equalTo: topAnchor,
+                    constant: topPadding
+                ),
+                line.widthAnchor.constraint(
+                    equalTo: widthAnchor,
+                    multiplier: widthPercent
+                ),
                 line.heightAnchor.constraint(equalToConstant: height)
             ])
         }
     
     private func setupGradientLayer() {
-        let gradientDarkColor = UIColor(white: 0.85, alpha: 1.0).cgColor
-        let gradientLightColor = UIColor(white: 0.95, alpha: 1.0).cgColor
+        let gradientDarkColor = UIColor(
+            white: 0.85,
+            alpha: 1.0
+        ).cgColor
+        let gradientLightColor = UIColor(
+            white: 0.95,
+            alpha: 1.0
+        ).cgColor
         
-        gradientLayer.colors = [gradientDarkColor, gradientLightColor, gradientDarkColor]
+        gradientLayer.colors = [
+            gradientDarkColor,
+            gradientLightColor,
+            gradientDarkColor
+        ]
         gradientLayer.locations = [0.0, 0.5, 1.0]
         
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradientLayer.startPoint = CGPoint(
+            x: 0.0,
+            y: 0.5
+        )
+        gradientLayer.endPoint = CGPoint(
+            x: 1.0,
+            y: 0.5
+        )
         
-        gradientLayer.frame = CGRect(x: -bounds.width, y: 0, width: bounds.width * 3, height: bounds.height)
+        gradientLayer.frame = CGRect(
+            x: -bounds.width,
+            y: 0,
+            width: bounds.width * 3,
+            height: bounds.height
+        )
         
-        layer.insertSublayer(gradientLayer, at: 0)
-    }
-    
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        gradientLayer.frame = CGRect(x: -bounds.width, y: 0, width: bounds.width * 3, height: bounds.height)
-    }
-    
-    public func startAnimating() {
-        let animation = CABasicAnimation(keyPath: "locations")
-        
-        animation.fromValue = [-1.0, -0.5, 0.0]
-        animation.toValue = [1.0, 1.5, 2.0]
-        animation.duration = 1.2
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        animation.repeatCount = .infinity
-        
-        gradientLayer.add(animation, forKey: "shimmer")
-    }
-    
-    public func stopAnimating() {
-        gradientLayer.removeAllAnimations()
+        layer.insertSublayer(
+            gradientLayer,
+            at: 0
+        )
     }
 }

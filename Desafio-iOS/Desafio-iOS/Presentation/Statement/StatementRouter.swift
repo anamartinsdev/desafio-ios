@@ -17,7 +17,10 @@ final class StatementRouter: StatementRouterProtocol {
     }
     
     func navigateToTransactionDetail(transactionId: String) {
-        let viewController = StatementDetailFactory.create(navigationController: navigationController, and: transactionId)
+        let viewController = StatementDetailFactory.create(
+            navigationController: navigationController,
+            and: transactionId
+        )
         navigationController.pushViewController(viewController, animated: true)
     }
 }

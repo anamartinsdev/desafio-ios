@@ -59,18 +59,45 @@ extension ErrorView: ViewCode {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            titleLabel.topAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.topAnchor,
+                constant: 20
+            ),
+            titleLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 20
+            ),
+            titleLabel.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -20
+            ),
 
-            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            messageLabel.topAnchor.constraint(
+                equalTo: titleLabel.bottomAnchor,
+                constant: 10
+            ),
+            messageLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 20
+            ),
+            messageLabel.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -20
+            ),
 
             actionButton.heightAnchor.constraint(equalToConstant: 64),
-            actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            actionButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
+            actionButton.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 24
+            ),
+            actionButton.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -24
+            ),
+            actionButton.bottomAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.bottomAnchor,
+                constant: -16
+            )
         ])
     }
     
@@ -79,6 +106,10 @@ extension ErrorView: ViewCode {
         titleLabel.text = "Ocorreu um erro"
         messageLabel.text = "Nossa plataforma encontrou um erro inesperado. Por favor, tente novamente."
         
-        actionButton.addTarget(self, action: #selector(onTapBack), for: .touchUpInside)
+        actionButton.addTarget(
+            self,
+            action: #selector(onTapBack),
+            for: .touchUpInside
+        )
     }
 }

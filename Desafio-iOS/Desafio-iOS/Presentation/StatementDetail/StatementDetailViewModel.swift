@@ -4,6 +4,7 @@ protocol StatementDetailViewModelProtocol {
     var onStateChange: ((ViewState<TransactionDetail>?) -> Void)? { get set }
     func onTapBack()
     func getTransactionDetail()
+    func navigateToErrorScreen()
 }
 
 final class StatementDetailViewModel: StatementDetailViewModelProtocol {
@@ -45,6 +46,10 @@ final class StatementDetailViewModel: StatementDetailViewModelProtocol {
                 }
             }
         }
+    }
+    
+    func navigateToErrorScreen() {
+        router.navigateToErrorScreen()
     }
 }
 

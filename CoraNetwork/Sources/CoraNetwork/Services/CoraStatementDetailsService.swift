@@ -20,8 +20,14 @@ public class CoraStatementDetailsService: CoraStatementDetailsServiceProtocol {
         
         var request = URLRequest(url: url)
         request.httpMethod = HttpMethod.get.rawValue
-        request.setValue(NetworkConfiguration.apiKey, forHTTPHeaderField: "apikey")
-        request.setValue(networkManager.token, forHTTPHeaderField: "token")
+        request.setValue(
+            NetworkConfiguration.apiKey,
+            forHTTPHeaderField: "apikey"
+        )
+        request.setValue(
+            networkManager.token,
+            forHTTPHeaderField: "token"
+        )
         
         networkManager.performRequest(request: request) { data, response, error in
             completion(data, error)

@@ -120,7 +120,10 @@ extension StatementDetailView: ViewCode {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            customNavigationBar.topAnchor.constraint(equalTo: topAnchor, constant: -10),
+            customNavigationBar.topAnchor.constraint(
+                equalTo: topAnchor,
+                constant: -10
+            ),
             customNavigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
             customNavigationBar.heightAnchor.constraint(equalToConstant: 94),
@@ -141,30 +144,55 @@ extension StatementDetailView: ViewCode {
             
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
 
-            titleStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            titleStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            titleStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            titleStack.topAnchor.constraint(
+                equalTo: contentView.topAnchor,
+                constant: 20
+            ),
+            titleStack.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: 20
+            ),
+            titleStack.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor,
+                constant: -20
+            ),
             titleStack.heightAnchor.constraint(equalToConstant: 64),
 
-            actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            actionButton.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 20
+            ),
+            actionButton.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -20
+            ),
             actionButton.heightAnchor.constraint(equalToConstant: 64),
-            actionButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            actionButton.bottomAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.bottomAnchor,
+                constant: -20
+            ),
 
             detailView.topAnchor.constraint(equalTo: titleStack.bottomAnchor),
             detailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            detailView.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -20).withPriority(999)
+            detailView.bottomAnchor.constraint(
+                equalTo: actionButton.topAnchor,
+                constant: -20
+            ).withPriority(999)
         ])
     }
     
     func setupAdditionalConfiguration() {
         backgroundColor = .white
         titleLabel.text = "Transferência enviada"
-        titleLabel.applyBoldFont(size: 16, color: UIColor(hex: "3B3B3B"))
+        titleLabel.applyBoldFont(
+            size: 16,
+            color: UIColor(hex: "3B3B3B")
+        )
         titleIcon.tintColor = UIColor(hex: "3B3B3B")
         customNavigationBar.configure(
             title: "Detalhes da transferência",
+            titleColor: UIColor(hex: "3B3B3B"),
             showBackButton: true,
             backAction: { [weak self] in
                 self?.actionBack?()
@@ -177,12 +205,5 @@ extension StatementDetailView: ViewCode {
             action: #selector(onTapShare),
             for: .touchUpInside
         )
-    }
-}
-
-extension NSLayoutConstraint {
-    func withPriority(_ priority: Float) -> NSLayoutConstraint {
-        self.priority = UILayoutPriority(priority)
-        return self
     }
 }

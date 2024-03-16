@@ -16,6 +16,10 @@ final class AuthRepository: AuthRepositoryProtocol {
     
     func authenticate(completion: @escaping (Bool, String?) -> Void) {
         let credentials = authUseCase.getCredentials()
-        authService.login(cpf: credentials.0, password: credentials.1, completion: completion)
+        authService.login(
+            cpf: credentials.0,
+            password: credentials.1,
+            completion: completion
+        )
     }
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-final class TransactionDetailMapper {
+final class StatementTransactionDetailMapper {
     static func map(_ transactionDetail: TransactionDetail) -> [([String], Int?)] {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -16,8 +16,20 @@ final class TransactionDetailMapper {
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let displayDate = dateFormatter.string(from: date)
 
-        let valueSection: ([String], Int?) = (["Valor", currencyAmount], 1)
-        let dateSection: ([String], Int?) = (["Data", displayDate], 1)
+        let valueSection: ([String], Int?) = (
+            [
+                "Valor",
+                currencyAmount
+            ],
+            1
+        )
+        let dateSection: ([String], Int?) = (
+            [
+                "Data",
+                displayDate
+            ],
+            1
+        )
         
         let fromSection: ([String], Int?) = (
             [
@@ -39,22 +51,47 @@ final class TransactionDetailMapper {
             1
         )
         
-        let descriptionSection: ([String], Int?) = (["Descrição", transactionDetail.description], nil)
+        let descriptionSection: ([String], Int?) = (
+            [
+                "Descrição",
+                transactionDetail.description
+            ],
+            nil
+        )
 
-        return [valueSection, dateSection, fromSection, toSection, descriptionSection]
+        return [
+            valueSection,
+            dateSection,
+            fromSection,
+            toSection,
+            descriptionSection
+        ]
     }
     
     private static func format(documentNumber: String) -> String {
-        // Implement formatting logic depending on document type (CPF/CNPJ)
-        // For example, here's a simplistic way to format CNPJ:
         let numbers = documentNumber.filter { "0"..."9" ~= $0 }
-        if numbers.count == 14 { // Assuming it's CNPJ
-            return numbers.inserting(separator: ".", every: 3)
-                           .inserting(separator: "/", at: 8)
-                           .inserting(separator: "-", at: 12)
-        } else { // Assuming it's CPF
-            return numbers.inserting(separator: ".", every: 3)
-                           .inserting(separator: "-", at: 9)
+        if numbers.count == 14 {
+            return numbers.inserting(
+                separator: ".",
+                every: 3
+            )
+            .inserting(
+                separator: "/",
+                at: 8
+            )
+            .inserting(
+                separator: "-",
+                at: 12
+            )
+        } else {
+            return numbers.inserting(
+                separator: ".",
+                every: 3
+            )
+            .inserting(
+                separator: "-",
+                at: 9
+            )
         }
     }
 }

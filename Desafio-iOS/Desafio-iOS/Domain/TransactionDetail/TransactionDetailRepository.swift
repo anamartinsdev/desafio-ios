@@ -27,7 +27,12 @@ final class TransactionDetailRepository: TransactionDetailRepositoryProtocol {
                     completion(.failure(error))
                 }
             } else {
-                completion(.failure(NSError(domain: "fetchDetailsError", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data and no error were received."])))
+                completion(.failure(
+                    NSError(
+                        domain: "fetchDetailsError",
+                        code: -1,
+                        userInfo: [NSLocalizedDescriptionKey: "No data and no error were received."]
+                    )))
             }
         }
     }

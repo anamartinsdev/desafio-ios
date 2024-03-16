@@ -18,7 +18,10 @@ final class AuthCPFViewModel: AuthCPFViewModelProtocol {
     func onTapNext(data: String) {
         let keychainManager = KeychainManager()
         do {
-            try? keychainManager.save(data, for: .cpf)
+            try? keychainManager.save(
+                data,
+                for: .cpf
+            )
             router.navigateToPassword()
         }
     }

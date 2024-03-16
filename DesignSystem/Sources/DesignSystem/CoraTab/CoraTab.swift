@@ -19,7 +19,7 @@ public class CoraTab: UIView {
     public init(items: [String], icon: UIImage? = nil) {
         segmentControl = UISegmentedControl(items: items)
         iconImageView = UIImageView(image: icon)
-        iconImageView.tintColor = .systemPink
+        iconImageView.tintColor = UIColor(hex: "FE3E6D")
         
         super.init(frame: .zero)
        
@@ -77,12 +77,12 @@ public class CoraTab: UIView {
     
     private func updateSegmentControlColors() {
         let normalTextAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.lightGray
+            .foregroundColor: UIColor(hex: "6B7076")
         ]
         
         let selectedTextAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.systemPink,
-            .underlineColor: UIColor.systemPink,
+            .foregroundColor: UIColor(hex: "FE3E6D"),
+            .underlineColor: UIColor(hex: "FE3E6D"),
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
         

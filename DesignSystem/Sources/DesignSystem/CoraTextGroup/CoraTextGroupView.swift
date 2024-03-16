@@ -21,10 +21,22 @@ public class CoraTextGroupView: UIView {
         addSubview(mainStackView)
         
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            mainStackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -20)
+            mainStackView.topAnchor.constraint(
+                equalTo: topAnchor,
+                constant: 20
+            ),
+            mainStackView.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 20
+            ),
+            mainStackView.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -20
+            ),
+            mainStackView.bottomAnchor.constraint(
+                lessThanOrEqualTo: bottomAnchor,
+                constant: -20
+            )
         ])
     }
     
@@ -43,11 +55,24 @@ public class CoraTextGroupView: UIView {
                 label.numberOfLines = 0
                 
                 let isBold = index == boldIndex
-                label.font = isBold ? .boldSystemFont(ofSize: 16) : .systemFont(ofSize: 14)
                 if isBold {
-                    label.textColor = .black
+                    label.applyBoldFont(
+                        size: 16,
+                        color: UIColor(hex: "3B3B3B")
+                    )
+                } else {
+                    label.applyRegularFont(
+                        size: 14,
+                        color: UIColor(hex: "6B7076")
+                    )
+                }
+                
+                if isBold {
                     groupStackView.addArrangedSubview(label)
-                    groupStackView.setCustomSpacing(8, after: label)
+                    groupStackView.setCustomSpacing(
+                        8,
+                        after: label
+                    )
                 } else {
                     label.textColor = .darkGray
                     groupStackView.addArrangedSubview(label)

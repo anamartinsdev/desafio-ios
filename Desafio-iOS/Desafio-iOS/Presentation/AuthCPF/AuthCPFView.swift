@@ -94,24 +94,57 @@ extension AuthCPFView: ViewCode {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            customNavigationBar.topAnchor.constraint(equalTo: topAnchor, constant: -10),
+            customNavigationBar.topAnchor.constraint(
+                equalTo: topAnchor,
+                constant: -10
+            ),
             customNavigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
             customNavigationBar.heightAnchor.constraint(equalToConstant: 94),
             
-            titleLabel.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(
+                equalTo: customNavigationBar.bottomAnchor,
+                constant: 20
+            ),
+            titleLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 20
+            ),
             
-            cpfLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            cpfLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            cpfLabel.topAnchor.constraint(
+                equalTo: titleLabel.bottomAnchor,
+                constant: 20
+            ),
+            cpfLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 20
+            ),
             
-            cpfTextField.topAnchor.constraint(equalTo: cpfLabel.bottomAnchor, constant: 20),
-            cpfTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            cpfTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            cpfTextField.topAnchor.constraint(
+                equalTo: cpfLabel.bottomAnchor,
+                constant: 32
+            ),
+            cpfTextField.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 20
+            ),
+            cpfTextField.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -20
+            ),
             
-            nextButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            nextButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            nextButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            nextButton.bottomAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.bottomAnchor,
+                constant: -20
+            ),
+            nextButton.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 20
+            ),
+            nextButton.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -20
+            ),
             nextButton.heightAnchor.constraint(equalToConstant: 48.0)
         ])
     }
@@ -121,6 +154,7 @@ extension AuthCPFView: ViewCode {
 
         customNavigationBar.configure(
             title: "Login Cora",
+            titleColor: UIColor(hex: "6B7076"),
             showBackButton: true,
             backAction: { [weak self] in
                 self?.actionBack?()
@@ -143,14 +177,24 @@ extension AuthCPFView: ViewCode {
             for: .editingChanged
         )
         cpfTextField.textField.delegate = self
-        
+        cpfTextField.textField.font = UIFont(
+            name: "Avenir-Roman",
+            size: 22
+        )
+        cpfTextField.textField.textColor = UIColor(hex: "3B3B3B")
         cpfTextField.becomeFirstResponder()
         
         titleLabel.text = "Bem-vindo de volta!"
-        titleLabel.applyRegularFont(size: 16, color: UIColor(hex: "6B7076"))
+        titleLabel.applyRegularFont(
+            size: 16,
+            color: UIColor(hex: "6B7076")
+        )
         
         cpfLabel.text = "Qual seu CPF?"
-        cpfLabel.applyBoldFont(size: 28)
+        cpfLabel.applyBoldFont(
+            size: 28,
+            color: UIColor(hex: "3B3B3B")
+        )
     }
 }
 
@@ -161,7 +205,10 @@ extension AuthCPFView: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
-        guard let stringRange = Range(range, in: currentText) else { return false }
+        guard let stringRange = Range(
+            range,
+            in: currentText
+        ) else { return false }
         
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         

@@ -12,8 +12,11 @@ public class CoraAuthService: CoraAuthServiceProtocol {
     }
     
     public func login(cpf: String, password: String, completion: @escaping (Bool, String?) -> Void) {
-        networkManager.authenticate(cpf: cpf, password: password, completion: { success, token in
-            completion(success, token)
+        networkManager.authenticate(
+            cpf: cpf,
+            password: password,
+            completion: { success, token in
+                completion(success, token)
         })
     }
 }

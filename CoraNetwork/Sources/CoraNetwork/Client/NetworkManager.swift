@@ -8,7 +8,10 @@ public protocol NetworkManagerProtocol {
 }
 
 public class NetworkManager: NetworkManagerProtocol {
-    private let queue = DispatchQueue(label: NetworkConfiguration.queueIdentifier, attributes: .concurrent)
+    private let queue = DispatchQueue(
+        label: NetworkConfiguration.queueIdentifier,
+        attributes: .concurrent
+    )
     private let session: URLSession
     private var isTokenRefreshing = false
     private let keychainManager: KeychainManagerProtocol
@@ -24,7 +27,10 @@ public class NetworkManager: NetworkManagerProtocol {
                 try? keychainManager.delete(for: .token)
                 return
             }
-            try? keychainManager.save(newValue, for: .token)
+            try? keychainManager.save(
+                newValue,
+                for: .token
+            )
         }
     }
     
@@ -38,10 +44,11 @@ public class NetworkManager: NetworkManagerProtocol {
     
     public func performRequest(request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         queue.sync {
-            // Verifica se o token precisa ser atualizado antes de fazer a requisição.
             if let expirationDate = self.tokenExpirationDate, Date() < expirationDate, !isTokenRefreshing {
-                // Token é válido, faz a requisição.
-                self.sendRequest(request, completion: completion)
+                self.sendRequest(
+                    request,
+                    completion: completion
+                )
                 return
             }
             
@@ -51,7 +58,10 @@ public class NetworkManager: NetworkManagerProtocol {
             }
             
             self.updateToken {
-                self.sendRequest(request, completion: completion)
+                self.sendRequest(
+                    request,
+                    completion: completion
+                )
             }
         }
     }
@@ -59,9 +69,15 @@ public class NetworkManager: NetworkManagerProtocol {
     private func sendRequest(_ request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         var modifiedRequest = request
         if let token = self.token {
-            modifiedRequest.setValue(token, forHTTPHeaderField: "token") // Ajuste o cabeçalho conforme necessário
+            modifiedRequest.setValue(
+                token,
+                forHTTPHeaderField: "token"
+            )
         }
-        modifiedRequest.setValue(NetworkConfiguration.apiKey, forHTTPHeaderField: "apikey")
+        modifiedRequest.setValue(
+            NetworkConfiguration.apiKey,
+            forHTTPHeaderField: "apikey"
+        )
         
         self.session.dataTask(with: modifiedRequest) { data, response, error in
             DispatchQueue.main.async {
@@ -71,26 +87,31 @@ public class NetworkManager: NetworkManagerProtocol {
     }
     
     public func authenticate(cpf: String?, password: String?, completion: @escaping (Bool, String?) -> Void) {
-        // Verifica se a URL é válida
         guard let url = URL(string: "\(NetworkConfiguration.baseURL)/auth") else {
             completion(false, "Invalid URL")
             return
         }
         
-        // Prepara a requisição
         var request = URLRequest(url: url)
         request.httpMethod = HttpMethod.post.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(NetworkConfiguration.apiKey, forHTTPHeaderField: "apikey")
+        request.setValue(
+            "application/json",
+            forHTTPHeaderField: "Content-Type"
+        )
+        request.setValue(
+            NetworkConfiguration.apiKey,
+            forHTTPHeaderField: "apikey"
+        )
         
         let body: [String: Any] = ["cpf": cpf ?? "", "password": password ?? ""]
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        request.httpBody = try? JSONSerialization.data(
+            withJSONObject: body,
+            options: []
+        )
         
-        // Envia a requisição
         session.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
             
-            // Trata possíveis erros na requisição
             if let error = error {
                 DispatchQueue.main.async {
                     completion(false, error.localizedDescription)
@@ -98,7 +119,6 @@ public class NetworkManager: NetworkManagerProtocol {
                 return
             }
             
-            // Verifica o código de status da resposta
             guard let httpResponse = response as? HTTPURLResponse else {
                 DispatchQueue.main.async {
                     completion(false, NetworkError.invalidResponse.localizedDescription)
@@ -107,7 +127,7 @@ public class NetworkManager: NetworkManagerProtocol {
             }
             
             switch httpResponse.statusCode {
-            case 200: // Sucesso
+            case 200:
                 guard let data = data,
                       let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                       let newToken = jsonObject["token"] as? String else {
@@ -145,12 +165,21 @@ public class NetworkManager: NetworkManagerProtocol {
             return
         }
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(NetworkConfiguration.apiKey, forHTTPHeaderField: "apikey")
+        request.httpMethod = HttpMethod.post.rawValue
+        request.setValue(
+            "application/json",
+            forHTTPHeaderField: "Content-Type"
+        )
+        request.setValue(
+            NetworkConfiguration.apiKey,
+            forHTTPHeaderField: "apikey"
+        )
         
         let body: [String: Any] = ["token": token ?? ""]
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        request.httpBody = try? JSONSerialization.data(
+            withJSONObject: body,
+            options: []
+        )
         
         session.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
@@ -175,11 +204,18 @@ public class NetworkManager: NetworkManagerProtocol {
             }
             
             self.token = newToken
-            self.tokenExpirationDate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())
+            self.tokenExpirationDate = Calendar.current.date(
+                byAdding: .minute,
+                value: 1,
+                to: Date()
+            )
             
             DispatchQueue.main.async {
                 self.pendingRequests.forEach { request, completion in
-                    self.sendRequest(request, completion: completion)
+                    self.sendRequest(
+                        request,
+                        completion: completion
+                    )
                 }
                 self.pendingRequests.removeAll()
             }

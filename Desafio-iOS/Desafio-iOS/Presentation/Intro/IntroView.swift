@@ -9,7 +9,6 @@ protocol IntroViewProtocol: UIView {
 final class IntroView: UIView, IntroViewProtocol {
     private lazy var backgroundImage: UIImageView = {
         let image = UIImageView(image: UIImage(named: "home-banner"))
-//        image.contentMode = .scaleToFill
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
@@ -102,29 +101,77 @@ extension IntroView: ViewCode {
             backgroundImage.topAnchor.constraint(equalTo: topAnchor),
             backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor),
             backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backgroundImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.45),
+            backgroundImage.heightAnchor.constraint(
+                equalTo: heightAnchor,
+                multiplier: 0.45
+            ),
             
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            titleLabel.bottomAnchor.constraint(equalTo: subTitleLabel.topAnchor, constant: -6),
+            titleLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 24
+            ),
+            titleLabel.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -24
+            ),
+            titleLabel.bottomAnchor.constraint(
+                equalTo: subTitleLabel.topAnchor,
+                constant: -6
+            ),
             
-            subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            subTitleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -16),
+            subTitleLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 24
+            ),
+            subTitleLabel.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -24
+            ),
+            subTitleLabel.bottomAnchor.constraint(
+                equalTo: descriptionLabel.topAnchor,
+                constant: -16
+            ),
             
-            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            descriptionLabel.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -26),
+            descriptionLabel.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 24
+            ),
+            descriptionLabel.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -24
+            ),
+            descriptionLabel.bottomAnchor.constraint(
+                equalTo: signUpButton.topAnchor,
+                constant: -26
+            ),
             
             signUpButton.heightAnchor.constraint(equalToConstant: 64),
-            signUpButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            signUpButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            signUpButton.bottomAnchor.constraint(equalTo: signInButton.topAnchor, constant: -16),
+            signUpButton.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 24
+            ),
+            signUpButton.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -24
+            ),
+            signUpButton.bottomAnchor.constraint(
+                equalTo: signInButton.topAnchor,
+                constant: -16
+            ),
             
             signInButton.heightAnchor.constraint(equalToConstant: 64),
-            signInButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            signInButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            signInButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
+            signInButton.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: 24
+            ),
+            signInButton.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -24
+            ),
+            signInButton.bottomAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.bottomAnchor,
+                constant: -16
+            )
         ])
     }
     

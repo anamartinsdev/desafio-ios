@@ -33,7 +33,7 @@
 		A70CB9C32BA37265005E7CC3 /* TransactionDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9C22BA37265005E7CC3 /* TransactionDetailRepository.swift */; };
 		A70CB9C62BA3BD95005E7CC3 /* TransactionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9C52BA3BD95005E7CC3 /* TransactionDetail.swift */; };
 		A70CB9C92BA3C3B3005E7CC3 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9C82BA3C3B3005E7CC3 /* ViewState.swift */; };
-		A70CB9CB2BA3D302005E7CC3 /* TransactionDetailMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9CA2BA3D302005E7CC3 /* TransactionDetailMapper.swift */; };
+		A70CB9CB2BA3D302005E7CC3 /* StatementTransactionDetailMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9CA2BA3D302005E7CC3 /* StatementTransactionDetailMapper.swift */; };
 		A70CB9CE2BA3D329005E7CC3 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9CD2BA3D329005E7CC3 /* String.swift */; };
 		A70CB9D12BA3D575005E7CC3 /* StatementRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9D02BA3D575005E7CC3 /* StatementRouter.swift */; };
 		A70CB9D32BA3D57E005E7CC3 /* StatementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9D22BA3D57E005E7CC3 /* StatementView.swift */; };
@@ -50,6 +50,8 @@
 		A70CB9EC2BA3ED97005E7CC3 /* ErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9EB2BA3ED97005E7CC3 /* ErrorRouter.swift */; };
 		A70CB9EE2BA3EDFF005E7CC3 /* ErrorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9ED2BA3EDFF005E7CC3 /* ErrorFactory.swift */; };
 		A70CB9F12BA47CE3005E7CC3 /* CoraSecurity in Frameworks */ = {isa = PBXBuildFile; productRef = A70CB9F02BA47CE3005E7CC3 /* CoraSecurity */; };
+		A70CB9F82BA53AC5005E7CC3 /* TransactionListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9F72BA53AC5005E7CC3 /* TransactionListResponse.swift */; };
+		A70CB9FA2BA53F08005E7CC3 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CB9F92BA53F08005E7CC3 /* NSLayoutConstraint.swift */; };
 		A72490492B9D094700A77562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72490482B9D094700A77562 /* AppDelegate.swift */; };
 		A724904B2B9D094700A77562 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724904A2B9D094700A77562 /* SceneDelegate.swift */; };
 		A72490502B9D094700A77562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A724904E2B9D094700A77562 /* Main.storyboard */; };
@@ -105,7 +107,7 @@
 		A70CB9C22BA37265005E7CC3 /* TransactionDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailRepository.swift; sourceTree = "<group>"; };
 		A70CB9C52BA3BD95005E7CC3 /* TransactionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetail.swift; sourceTree = "<group>"; };
 		A70CB9C82BA3C3B3005E7CC3 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
-		A70CB9CA2BA3D302005E7CC3 /* TransactionDetailMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailMapper.swift; sourceTree = "<group>"; };
+		A70CB9CA2BA3D302005E7CC3 /* StatementTransactionDetailMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementTransactionDetailMapper.swift; sourceTree = "<group>"; };
 		A70CB9CD2BA3D329005E7CC3 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A70CB9D02BA3D575005E7CC3 /* StatementRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementRouter.swift; sourceTree = "<group>"; };
 		A70CB9D22BA3D57E005E7CC3 /* StatementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,8 @@
 		A70CB9E92BA3ED5B005E7CC3 /* ErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewModel.swift; sourceTree = "<group>"; };
 		A70CB9EB2BA3ED97005E7CC3 /* ErrorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRouter.swift; sourceTree = "<group>"; };
 		A70CB9ED2BA3EDFF005E7CC3 /* ErrorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorFactory.swift; sourceTree = "<group>"; };
+		A70CB9F72BA53AC5005E7CC3 /* TransactionListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListResponse.swift; sourceTree = "<group>"; };
+		A70CB9F92BA53F08005E7CC3 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		A72490452B9D094700A77562 /* Desafio-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Desafio-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72490482B9D094700A77562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A724904A2B9D094700A77562 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,7 +202,7 @@
 				A70CB9BB2BA37095005E7CC3 /* StatementDetailViewController.swift */,
 				A70CB9BD2BA370A5005E7CC3 /* StatementDetailRouter.swift */,
 				A70CB9BF2BA370AD005E7CC3 /* StatementDetailFactory.swift */,
-				A70CB9CA2BA3D302005E7CC3 /* TransactionDetailMapper.swift */,
+				A70CB9CA2BA3D302005E7CC3 /* StatementTransactionDetailMapper.swift */,
 			);
 			path = StatementDetail;
 			sourceTree = "<group>";
@@ -260,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				A70CB9CD2BA3D329005E7CC3 /* String.swift */,
+				A70CB9F92BA53F08005E7CC3 /* NSLayoutConstraint.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				A70CB9DB2BA3D939005E7CC3 /* Transaction.swift */,
+				A70CB9F72BA53AC5005E7CC3 /* TransactionListResponse.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -537,9 +543,10 @@
 				A70CB9E62BA3EAE4005E7CC3 /* ErrorViewController.swift in Sources */,
 				A70CB9C62BA3BD95005E7CC3 /* TransactionDetail.swift in Sources */,
 				A70CB9C02BA370AD005E7CC3 /* StatementDetailFactory.swift in Sources */,
+				A70CB9F82BA53AC5005E7CC3 /* TransactionListResponse.swift in Sources */,
 				A72490532B9D094700A77562 /* Desafio_iOS.xcdatamodeld in Sources */,
 				A70CB9BA2BA3708C005E7CC3 /* StatementDetailViewModel.swift in Sources */,
-				A70CB9CB2BA3D302005E7CC3 /* TransactionDetailMapper.swift in Sources */,
+				A70CB9CB2BA3D302005E7CC3 /* StatementTransactionDetailMapper.swift in Sources */,
 				A70CB9A02BA276BD005E7CC3 /* AuthPasswordFactory.swift in Sources */,
 				A72490492B9D094700A77562 /* AppDelegate.swift in Sources */,
 				A70CB9962BA2742F005E7CC3 /* IntroFactory.swift in Sources */,
@@ -564,6 +571,7 @@
 				A70CB9892BA12BD2005E7CC3 /* StatementDetailView.swift in Sources */,
 				A70CB9DC2BA3D939005E7CC3 /* Transaction.swift in Sources */,
 				A70CB9EE2BA3EDFF005E7CC3 /* ErrorFactory.swift in Sources */,
+				A70CB9FA2BA53F08005E7CC3 /* NSLayoutConstraint.swift in Sources */,
 				A70CB9A22BA27A61005E7CC3 /* AuthPasswordViewController.swift in Sources */,
 				A70CB9DE2BA3DA48005E7CC3 /* StatementTransactionMapper.swift in Sources */,
 				A70CB9E32BA3E7A6005E7CC3 /* StatementFactory.swift in Sources */,
@@ -759,8 +767,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -768,9 +777,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "anamartinspessoa.Desafio-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -787,8 +799,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -796,9 +809,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "anamartinspessoa.Desafio-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

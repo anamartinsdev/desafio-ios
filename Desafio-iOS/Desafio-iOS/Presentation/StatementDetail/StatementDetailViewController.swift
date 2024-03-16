@@ -54,13 +54,12 @@ private extension StatementDetailViewController {
             case .loading:
                 break
             case .data(let transactionDetail):
-                let dataSections = TransactionDetailMapper.map(transactionDetail)
+                let dataSections = StatementTransactionDetailMapper.map(transactionDetail)
 
                 self?.contentView.configure(with: dataSections)
                 break
             case .error(let errorMessage):
-                print(errorMessage)
-                break
+                self?.viewModel.navigateToErrorScreen()
             case .none:
                 break
             }
