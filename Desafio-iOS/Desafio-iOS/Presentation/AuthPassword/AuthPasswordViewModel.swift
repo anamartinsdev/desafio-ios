@@ -1,6 +1,7 @@
 import CoraSecurity
 
 protocol AuthPasswordViewModelProtocol {
+    func onTapBack()
     func onTapNext(data: String)
 }
 
@@ -15,6 +16,10 @@ final class AuthPasswordViewModel: AuthPasswordViewModelProtocol {
         self.router = router
         self.repository = repository
         self.keychainManager = keychainManager
+    }
+    
+    func onTapBack() {
+        router.navigateToPrevious()
     }
     
     func onTapNext(data: String) {

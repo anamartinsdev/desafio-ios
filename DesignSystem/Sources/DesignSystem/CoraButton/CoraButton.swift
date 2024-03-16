@@ -11,9 +11,10 @@ public class CoraButton: UIControl {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.applyBoldFont(size: 16)
         return label
     }()
-
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -43,6 +44,31 @@ public class CoraButton: UIControl {
         super.init(coder: coder)
     }
     
+    public func apply(style: ButtonStyle) {
+        let tintColor: UIColor
+        let backgroundColor: UIColor
+        
+        switch style {
+        case .primary:
+            tintColor = .white
+            backgroundColor = UIColor(hex: "FE3E6D")
+        case .secondary:
+            tintColor = UIColor(hex: "FE3E6D")
+            backgroundColor = .white
+        case .disable:
+            tintColor = .white
+            backgroundColor = UIColor(hex: "979797")
+        }
+        
+        titleLabel.textColor = tintColor
+        if let buttonImage = buttonImage?.withRenderingMode(.alwaysTemplate) {
+            imageView.image = buttonImage
+            imageView.tintColor = tintColor
+        }
+        self.backgroundColor = backgroundColor
+    }
+}
+extension CoraButton {
     private func setup(title: String?, image: UIImage?, style: ButtonStyle) {
         buttonTitle = title
         buttonImage = image
@@ -89,30 +115,6 @@ public class CoraButton: UIControl {
                 titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
             ])
         }
-    }
-    
-    func apply(style: ButtonStyle) {
-        let tintColor: UIColor
-        let backgroundColor: UIColor
-        
-        switch style {
-        case .primary:
-            tintColor = .white
-            backgroundColor = .systemPink
-        case .secondary:
-            tintColor = .systemPink
-            backgroundColor = .white
-        case .disable:
-            tintColor = .white
-            backgroundColor = .lightGray
-        }
-        
-        titleLabel.textColor = tintColor
-        if let buttonImage = buttonImage?.withRenderingMode(.alwaysTemplate) {
-            imageView.image = buttonImage
-            imageView.tintColor = tintColor
-        }
-        self.backgroundColor = backgroundColor
     }
     
     @objc private func buttonAction() {

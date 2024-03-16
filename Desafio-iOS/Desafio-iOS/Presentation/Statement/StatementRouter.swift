@@ -1,6 +1,7 @@
 import UIKit.UINavigationController
 
 protocol StatementRouterProtocol {
+    func navigateToPrevious()
     func navigateToTransactionDetail(transactionId: String)
 }
 
@@ -9,6 +10,10 @@ final class StatementRouter: StatementRouterProtocol {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+    
+    func navigateToPrevious() {
+        navigationController.popViewController(animated: true)
     }
     
     func navigateToTransactionDetail(transactionId: String) {

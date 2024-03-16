@@ -42,7 +42,7 @@ final class AuthPasswordView: UIView, AuthPasswordViewProtocol {
     private lazy var forgotPasswordLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.textColor = .systemPink
+        label.textColor = UIColor(hex: "FE3E6D")
         label.isUserInteractionEnabled = true
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -52,7 +52,7 @@ final class AuthPasswordView: UIView, AuthPasswordViewProtocol {
     private lazy var nextButton: CoraButton = {
         let button = CoraButton(
             title: "Próximo",
-            image: UIImage(systemName: "ic_arrow-right"),
+            image: UIImage(named: "ic_arrow-right"),
             style: .primary
         )
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -93,6 +93,9 @@ final class AuthPasswordView: UIView, AuthPasswordViewProtocol {
 
     @objc private func textFieldDidChange(_ textField: UITextField) {
         dataString = textField.text ?? ""
+        let isValid = dataString.count == 6
+        nextButton.isEnabled = isValid
+        nextButton.apply(style: isValid ? .primary : .disable)
     }
     
     private func togglePassword() {
@@ -115,10 +118,10 @@ extension AuthPasswordView: ViewCode {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            customNavigationBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            customNavigationBar.topAnchor.constraint(equalTo: topAnchor, constant: -10),
             customNavigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            customNavigationBar.heightAnchor.constraint(equalToConstant: 44),
+            customNavigationBar.heightAnchor.constraint(equalToConstant: 94),
             
             titleLabel.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
@@ -157,9 +160,10 @@ extension AuthPasswordView: ViewCode {
         )
         
         titleLabel.text = "Digite sua senha de acesso"
-        //fonte customizada e negrito
-        forgotPasswordLabel.text = "Esqueci minha senha"
+        titleLabel.applyBoldFont(size: 24)
         
+        forgotPasswordLabel.text = "Esqueci minha senha"
+        forgotPasswordLabel.applyRegularFont(size: 16, color: UIColor(hex: "FE3E6D"))
         passwordTextField.addTarget(
             self,
             action: #selector(textFieldDidChange),
@@ -172,6 +176,8 @@ extension AuthPasswordView: ViewCode {
             action: #selector(onTapNext),
             for: .touchUpInside
         )
+        nextButton.apply(style: .disable)
+        nextButton.isEnabled = false
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTapForgotPassword))
         forgotPasswordLabel.addGestureRecognizer(tapGesture)
@@ -187,5 +193,14 @@ extension AuthPasswordView: ViewCode {
 extension AuthPasswordView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         dataString = textField.text ?? ""
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        // Permitir apenas números e limitar a 6 caracteres
+        return updatedText.count <= 6 && string.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
     }
 }

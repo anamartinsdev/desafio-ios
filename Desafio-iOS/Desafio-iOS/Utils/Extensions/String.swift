@@ -20,4 +20,8 @@ extension String {
         
         return String(self[..<start]) + separator + String(self[start..<end])
     }
+    
+    func capitalizingFirstLetter() -> String {
+        return self.prefix(1).uppercased() + self.dropFirst()
+    }
 }

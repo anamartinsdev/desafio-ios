@@ -68,7 +68,7 @@ private extension StatementDetailViewController {
     }
 }
 
-private extension StatementDetailViewController {
+extension UIViewController {
     func shareSnapshot(image: UIImage) {
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         

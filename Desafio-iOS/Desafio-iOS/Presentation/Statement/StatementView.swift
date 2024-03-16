@@ -5,17 +5,23 @@ protocol StatementViewProtocol: UIView {
     var tableView: UITableView { get }
     var actionBack: (() -> Void)? { get set }
     var actionReload: (() -> Void)? { get set }
+    var actionDownload: (() -> Void)? { get set }
+    var actionChangeTab: ((Int) -> Void)? { get set }
     func showLoadingState()
     func showErrorState(with message: String)
     func showDataState()
+    func takeSnapshot() -> UIImage?
 }
 
 final class StatementView: UIView, StatementViewProtocol {
 
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
         tableView.register(StatementTransactionTableViewCell.self, forCellReuseIdentifier: "StatementTransactionTableViewCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         return tableView
     }()
     
@@ -36,11 +42,10 @@ final class StatementView: UIView, StatementViewProtocol {
         return tab
     }()
     
-    private lazy var loadingView: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.hidesWhenStopped = true
-        return indicator
+    private lazy var loadingView: CoraSkeletonView = {
+        let view = CoraSkeletonView(frame: .zero, type: .statement)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private lazy var errorLabel: UILabel = {
@@ -65,6 +70,8 @@ final class StatementView: UIView, StatementViewProtocol {
     
     var actionBack: (() -> Void)?
     var actionReload: (() -> Void)?
+    var actionChangeTab: ((Int) -> Void)?
+    var actionDownload: (() -> Void)?
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -76,8 +83,24 @@ final class StatementView: UIView, StatementViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func willRemoveSubview(_ subview: UIView) {
+        super.willRemoveSubview(subview)
+        if subview == loadingView {
+            loadingView.stopAnimating()
+        }
+    }
+    
     @objc private func onTapReload() {
         actionReload?()
+    }
+    
+    func takeSnapshot() -> UIImage? {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        let image = renderer.image { _ in
+            drawHierarchy(in: bounds, afterScreenUpdates: true)
+        }
+        
+        return image
     }
     
     // MARK: - State Handlers
@@ -111,6 +134,10 @@ final class StatementView: UIView, StatementViewProtocol {
         actionButton.isHidden = true
         tableView.isHidden = false
     }
+    
+    private func changeTab(to index: Int) {
+        actionChangeTab?(index)
+    }
 }
 
 extension StatementView: ViewCode {
@@ -125,10 +152,10 @@ extension StatementView: ViewCode {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            customNavigationBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            customNavigationBar.topAnchor.constraint(equalTo: topAnchor, constant: -10),
             customNavigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            customNavigationBar.heightAnchor.constraint(equalToConstant: 44),
+            customNavigationBar.heightAnchor.constraint(equalToConstant: 94),
             
             coraTab.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor, constant: 8),
             coraTab.leftAnchor.constraint(equalTo: leftAnchor),
@@ -170,8 +197,12 @@ extension StatementView: ViewCode {
             },
             actionImage: UIImage(named: "ic_download"),
             action: { [weak self] in
-                self?.actionBack?()
+                self?.actionDownload?()
             }
         )
+        
+        coraTab.onValueChanged = { [weak self] selectedIndex in
+            self?.changeTab(to: selectedIndex)
+        }
     }
 }

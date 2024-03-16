@@ -19,6 +19,7 @@ final class IntroView: UIView, IntroViewProtocol {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = .white
+        label.applyBoldFont(size: 32)
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
@@ -28,6 +29,7 @@ final class IntroView: UIView, IntroViewProtocol {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = .white
+        label.applyRegularFont(size: 26)
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
@@ -38,6 +40,7 @@ final class IntroView: UIView, IntroViewProtocol {
         label.textAlignment = .left
         label.numberOfLines = .zero
         label.textColor = .white
+        label.applyRegularFont(size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
@@ -99,6 +102,7 @@ extension IntroView: ViewCode {
             backgroundImage.topAnchor.constraint(equalTo: topAnchor),
             backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor),
             backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+            backgroundImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
             
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
@@ -106,7 +110,7 @@ extension IntroView: ViewCode {
             
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            subTitleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -12),
+            subTitleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -16),
             
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
@@ -125,7 +129,7 @@ extension IntroView: ViewCode {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .systemPink
+        backgroundColor = UIColor(hex: "FE3E6D")
         titleLabel.text = "Conta Digital PJ"
         subTitleLabel.text = "Poderosamente simples"
         descriptionLabel.text = "Sua empresa livre de burocracias e de taxas para gerar boletos, fazer transferências e pagamentos."

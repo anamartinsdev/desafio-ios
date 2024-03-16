@@ -29,8 +29,9 @@ final class StatementDetailView: UIView, StatementDetailViewProtocol {
     }()
     
     private lazy var titleIcon: UIImageView = {
-        let image = UIImage(named: "ic_arrow-down-in")
+        let image = UIImage(named: "ic_arrow-up-out")
         let button = UIImageView(image: image)
+        button.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -87,17 +88,14 @@ final class StatementDetailView: UIView, StatementDetailViewProtocol {
     }
     
     func takeSnapshot() -> UIImage? {
-        // Esconde elementos que não devem ser incluídos no snapshot
         let actionButtonIsHidden = actionButton.isHidden
         actionButton.isHidden = true
         
-        // Renderiza a view em uma imagem
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         let image = renderer.image { _ in
             drawHierarchy(in: bounds, afterScreenUpdates: true)
         }
-        
-        // Restaura a visibilidade dos elementos escondidos
+
         actionButton.isHidden = actionButtonIsHidden
         
         return image
@@ -122,43 +120,69 @@ extension StatementDetailView: ViewCode {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            customNavigationBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            customNavigationBar.topAnchor.constraint(equalTo: topAnchor, constant: -10),
             customNavigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            customNavigationBar.heightAnchor.constraint(equalToConstant: 44),
-            
+            customNavigationBar.heightAnchor.constraint(equalToConstant: 94),
+
             scrollView.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-            titleIcon.heightAnchor.constraint(equalToConstant: 12),
-            titleIcon.widthAnchor.constraint(equalToConstant: 16),
-            
+
+            titleIcon.heightAnchor.constraint(equalToConstant: 24),
+            titleIcon.widthAnchor.constraint(equalToConstant: 24),
+
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: widthAnchor),
             
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
+
             titleStack.topAnchor.constraint(equalTo: contentView.topAnchor),
-            titleStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            titleStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            titleStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             titleStack.heightAnchor.constraint(equalToConstant: 64),
-            
-            actionButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            actionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 20),
+
+            actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             actionButton.heightAnchor.constraint(equalToConstant: 64),
-            actionButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            
+            actionButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
+
             detailView.topAnchor.constraint(equalTo: titleStack.bottomAnchor),
             detailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             detailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            detailView.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: 20)
+            detailView.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -20).withPriority(999)
         ])
     }
     
     func setupAdditionalConfiguration() {
         backgroundColor = .white
         titleLabel.text = "Transferência enviada"
+        titleLabel.applyRegularFont(size: 16, color: UIColor(hex: "6B7076"))
+        titleIcon.tintColor = UIColor(hex: "3B3B3B")
+        customNavigationBar.configure(
+            title: "Detalhes da transferência",
+            showBackButton: true,
+            backAction: { [weak self] in
+                self?.actionBack?()
+            },
+            actionImage: nil,
+            action: nil
+        )
+        actionButton.addTarget(
+            self,
+            action: #selector(onTapShare),
+            for: .touchUpInside
+        )
+    }
+}
+
+extension NSLayoutConstraint {
+    func withPriority(_ priority: Float) -> NSLayoutConstraint {
+        self.priority = UILayoutPriority(priority)
+        return self
     }
 }

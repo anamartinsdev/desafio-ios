@@ -30,9 +30,9 @@ final class AuthCPFView: UIView, AuthCPFViewProtocol {
         return label
     }()
     
-    private lazy var cpfTextField: UITextField = {
-        let textField = UITextField()
-        textField.keyboardType = .numberPad
+    private lazy var cpfTextField: CPFTextFieldView = {
+        let textField = CPFTextFieldView()
+        textField.textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
@@ -41,7 +41,7 @@ final class AuthCPFView: UIView, AuthCPFViewProtocol {
     private lazy var nextButton: CoraButton = {
         let button = CoraButton(
             title: "Próximo",
-            image: UIImage(systemName: "ic_arrow-right"),
+            image: UIImage(named: "ic_arrow-right"),
             style: .primary
         )
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -50,8 +50,8 @@ final class AuthCPFView: UIView, AuthCPFViewProtocol {
     }()
     
     private var dataString: String {
-        get { cpfTextField.text ?? "" }
-        set { cpfTextField.text = newValue }
+        get { cpfTextField.textField.text ?? "" }
+        set { cpfTextField.textField.text = newValue }
     }
     
     var actionNext: ((String) -> Void)?
@@ -72,8 +72,15 @@ final class AuthCPFView: UIView, AuthCPFViewProtocol {
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        dataString = textField.text ?? ""
+        cpfTextField.textFieldEditingChanged(textField)
+        dataString = cpfTextField.getRawCPFNumber()
+        cpfTextField.validateCPF()
+        
+        let isValidCPF = cpfTextField.isCPFValid(dataString)
+        nextButton.isEnabled = isValidCPF
+        nextButton.apply(style: isValidCPF ? .primary : .disable)
     }
+
 }
 
 extension AuthCPFView: ViewCode {
@@ -87,12 +94,12 @@ extension AuthCPFView: ViewCode {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            customNavigationBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            customNavigationBar.topAnchor.constraint(equalTo: topAnchor, constant: -10),
             customNavigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             customNavigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            customNavigationBar.heightAnchor.constraint(equalToConstant: 44),
+            customNavigationBar.heightAnchor.constraint(equalToConstant: 94),
             
-            titleLabel.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor, constant: 18),
+            titleLabel.topAnchor.constraint(equalTo: customNavigationBar.bottomAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             
             cpfLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
@@ -111,7 +118,7 @@ extension AuthCPFView: ViewCode {
     
     func setupAdditionalConfiguration() {
         backgroundColor = .white
-        customNavigationBar.backgroundColor = .gray02
+
         customNavigationBar.configure(
             title: "Login Cora",
             showBackButton: true,
@@ -122,28 +129,42 @@ extension AuthCPFView: ViewCode {
             action: nil
         )
         
-        titleLabel.text = "Bem-vindo de volta!"
-        //fonte customizada e negrito
-        cpfLabel.text = "Qual seu CPF?"
-        
         nextButton.addTarget(
             self,
             action: #selector(onTapNext),
             for: .touchUpInside
         )
+        nextButton.apply(style: .disable)
+        nextButton.isEnabled = false
         
-        cpfTextField.addTarget(
+        cpfTextField.textField.addTarget(
             self,
             action: #selector(textFieldDidChange),
             for: .editingChanged
         )
-        cpfTextField.delegate = self
+        cpfTextField.textField.delegate = self
+        
         cpfTextField.becomeFirstResponder()
+        
+        titleLabel.text = "Bem-vindo de volta!"
+        titleLabel.applyRegularFont(size: 16, color: UIColor(hex: "6B7076"))
+        
+        cpfLabel.text = "Qual seu CPF?"
+        cpfLabel.applyBoldFont(size: 28)
     }
 }
 
 extension AuthCPFView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         dataString = textField.text ?? ""
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        return updatedText.count <= 11 && string.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
     }
 }

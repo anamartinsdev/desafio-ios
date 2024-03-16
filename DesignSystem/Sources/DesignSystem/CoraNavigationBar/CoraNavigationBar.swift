@@ -5,13 +5,12 @@ public class CoraNavigationBar: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = UIColor(red: 59, green: 59, blue: 59, alpha: 1)
         return label
     }()
     
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
+        button.setImage(UIImage(named: "ic_chevron-left"), for: .normal)
         button.tintColor = .systemPink
         button.isHidden = true
         return button
@@ -53,18 +52,28 @@ public class CoraNavigationBar: UIView {
                 equalTo: leadingAnchor,
                 constant: 16
             ),
-            backButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            backButton.centerYAnchor.constraint(
+                equalTo: centerYAnchor,
+                constant: 25
+            ),
             backButton.widthAnchor.constraint(equalToConstant: 24),
             backButton.heightAnchor.constraint(equalToConstant: 24),
             
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.centerXAnchor.constraint(
+                equalTo: centerXAnchor),
+            titleLabel.centerYAnchor.constraint(
+                equalTo: centerYAnchor,
+                constant: 25
+            ),
             
             actionButton.trailingAnchor.constraint(
                 equalTo: trailingAnchor,
                 constant: -16
             ),
-            actionButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            actionButton.centerYAnchor.constraint(
+                equalTo: centerYAnchor,
+                constant: 25
+            ),
             actionButton.widthAnchor.constraint(equalToConstant: 24),
             actionButton.heightAnchor.constraint(equalToConstant: 24),
         ])
@@ -85,8 +94,10 @@ public class CoraNavigationBar: UIView {
         actionImage: UIImage? = nil,
         action: (() -> Void)? = nil
     ) {
-        backgroundColor = UIColor(red: 240, green: 244, blue: 248, alpha: 1)
+        backgroundColor = .clear
         titleLabel.text = title
+        titleLabel.applyRegularFont(size: 14, color: UIColor(hex: "6B7076"))
+        backgroundColor = UIColor(hex: "F0F4F8")
         backButton.isHidden = !showBackButton
         backButton.addTarget(
             self,

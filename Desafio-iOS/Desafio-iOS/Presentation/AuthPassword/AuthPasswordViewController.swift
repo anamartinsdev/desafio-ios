@@ -25,5 +25,8 @@ final class AuthPasswordViewController: UIViewController {
         contentView.actionNext = { [weak self] text in
             self?.viewModel.onTapNext(data: text)
         }
+        contentView.actionBack = { [weak self] in
+            self?.viewModel.onTapBack()
+        }
     }
 }

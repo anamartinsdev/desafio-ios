@@ -1,4 +1,5 @@
 import UIKit
+import DesignSystem
 
 final class StatementViewController: UIViewController {
     private var viewModel: StatementViewModelProtocol
@@ -24,13 +25,27 @@ final class StatementViewController: UIViewController {
     }
 
     private func setupView() {
+        contentView.tableView.estimatedRowHeight = 100
+        contentView.tableView.rowHeight = UITableView.automaticDimension
+        
         contentView.tableView.delegate = self
         contentView.tableView.dataSource = self
+        
         contentView.actionBack = { [weak self] in
-            self?.viewModel.loadTransactions()
+            self?.viewModel.onTapBack()
         }
+        
         contentView.actionReload = { [weak self] in
             self?.viewModel.loadTransactions()
+        }
+        
+        contentView.actionChangeTab = { [weak self] index in
+            self?.updateTransactions(for: index)
+        }
+        
+        contentView.actionDownload = { [weak self] in
+            guard let snapshot = self?.contentView.takeSnapshot() else { return }
+            self?.shareSnapshot(image: snapshot)
         }
     }
 
@@ -55,6 +70,27 @@ final class StatementViewController: UIViewController {
             contentView.tableView.reloadData()
         }
     }
+    
+    private func updateTransactions(for index: Int) {
+        switch index {
+        case 0:
+            transactionSections = viewModel.allTransactions()
+        case 1:
+            transactionSections = viewModel.transactionsFilteredByEntryType(.credit)
+        case 2:
+            transactionSections = viewModel.transactionsFilteredByEntryType(.debit)
+        case 3:
+            transactionSections = viewModel.transactionsFilteredByFutureDates()
+        default:
+            return
+        }
+        removeEmptySections()
+        contentView.tableView.reloadData()
+    }
+    
+    private func removeEmptySections() {
+        transactionSections = transactionSections.filter { !$0.transactions.isEmpty }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -67,9 +103,27 @@ extension StatementViewController: UITableViewDataSource {
         return transactionSections[section].transactions.count
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return transactionSections[section].date
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(hex: "F0F4F8")
+
+        let headerLabel = UILabel()
+        headerLabel.text = transactionSections[section].date
+        headerLabel.textColor = UIColor(hex: "6B7076")
+        headerLabel.applyRegularFont(size: 14)
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        headerView.addSubview(headerLabel)
+
+        NSLayoutConstraint.activate([
+            headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16),
+            headerLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
+            headerLabel.topAnchor.constraint(equalTo: headerView.topAnchor),
+            headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor)
+        ])
+        
+        return headerView
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StatementTransactionTableViewCell", for: indexPath) as! StatementTransactionTableViewCell
@@ -78,6 +132,10 @@ extension StatementViewController: UITableViewDataSource {
         cell.configure(with: transaction)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 36
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

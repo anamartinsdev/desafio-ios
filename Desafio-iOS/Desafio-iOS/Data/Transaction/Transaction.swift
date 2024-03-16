@@ -38,11 +38,17 @@ public struct Transaction {
     let time: String
     let amount: String
     let type: TransactionType
+    let entry: TransactionEntryType
 }
 
 public enum TransactionType {
     case normal
     case reversed
+}
+
+public enum TransactionEntryType {
+    case debit
+    case credit
 }
 
 // Estrutura para representar uma seção de transações

@@ -193,4 +193,8 @@ public class CoraSkeletonView: UIView {
         
         gradientLayer.add(animation, forKey: "shimmer")
     }
+    
+    public func stopAnimating() {
+        gradientLayer.removeAllAnimations()
+    }
 }

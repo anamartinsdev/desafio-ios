@@ -91,7 +91,6 @@ public class StatementTransactionTableViewCell: UITableViewCell {
     // MARK: - Configuration
     public func configure(with transaction: Transaction) {
         backgroundColor = .white
-        // Configuração dos textos
         descriptionLabel.text = transaction.description
         nameLabel.text = transaction.name
         
@@ -99,15 +98,30 @@ public class StatementTransactionTableViewCell: UITableViewCell {
         
         iconImageView.image = UIImage(systemName: "creditcard.fill")
         
-        // Aplica o estilo de texto tachado se a transação for do tipo estornada
+        
+        
+        switch transaction.entry {
+        case .debit:
+            amountLabel.textColor = UIColor(hex: "1A93DA")
+            descriptionLabel.textColor = UIColor(hex: "1A93DA")
+            iconImageView.tintColor = UIColor(hex: "1A93DA")
+        case .credit:
+            amountLabel.textColor = UIColor(hex: "3B3B3B")
+            descriptionLabel.textColor = UIColor(hex: "3B3B3B")
+            iconImageView.tintColor = UIColor(hex: "3B3B3B")
+        }
+        
+                
         if transaction.type == .reversed {
             let attributeString = NSAttributedString(
                 string: transaction.amount,
                 attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue]
             )
             amountLabel.attributedText = attributeString
+            iconImageView.image = UIImage(named: "ic_arrow-return")
         } else {
             amountLabel.text = transaction.amount
+            iconImageView.image = UIImage(named: "ic_arrow-up-out")
         }
     }
 }
